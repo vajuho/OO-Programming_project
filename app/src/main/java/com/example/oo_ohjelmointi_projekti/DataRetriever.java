@@ -1,0 +1,133 @@
+package com.example.oo_ohjelmointi_projekti;
+
+import android.content.Context;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class DataRetriever {
+    private final String API_KEY = "1a6f8d56679d0a39964b76ff40cc557c";
+    private final String CONVERTER_BASE_URL = "https://api.openweathermap.org/geo/1.0/direct?q=%s&limit=5&appid=%s";
+    private final String WEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid=%s";
+
+    public ArrayList<PopulationData> getPopulation(Context context, String area) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode areas = null;
+        try {
+            areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<String> keys = new ArrayList<>();
+        ArrayList<String> values = new ArrayList<>();
+
+        for (JsonNode node : areas.get("variables").get(1).get("values")) {
+            values.add(node.asText());
+        }
+        for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
+            keys.add(node.asText());
+        }
+
+        HashMap<String, String> municipalityCodes = new HashMap<>();
+
+        for (int i = 0; i < keys.size(); i++) {
+            municipalityCodes.put(keys.get(i), values.get(i));
+        }
+        String code = null;
+        code = null;
+        code = municipalityCodes.get(area);
+
+        try {
+            URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/Kuntien_avainluvut/2025/kuntien_avainluvut_2025_aikasarja.px");
+
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+            JsonNode jsonInputString = objectMapper.readTree(context.getResources().openRawResource(R.raw.populationsearch));
+
+            ((ObjectNode) jsonInputString.get("query").get(0).get("selection")).putArray("values").add(code);
+
+            byte[] input = objectMapper.writeValueAsBytes(jsonInputString);
+            OutputStream os = con.getOutputStream();
+            os.write(input, 0, input.length);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+            StringBuilder response = new StringBuilder();
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                response.append(line.trim());
+            }
+            JsonNode data = objectMapper.readTree(response.toString());
+
+            ArrayList<String> years = new ArrayList<>();
+            ArrayList<String> populations = new ArrayList<>();
+
+            for (JsonNode node : data.get("Vuosi").get("category").get("label")) {
+                years.add(node.asText());
+            }
+
+            for (JsonNode node : data.get("value")) {
+                populations.add(node.asText());
+            }
+
+            ArrayList<PopulationData> populationData = new ArrayList<>();
+            for (int i = 0; i < years.size(); i++) {
+                populationData.add(new PopulationData(Integer.valueOf(years.get(i)), Integer.valueOf(populations.get(i))));
+            }
+            return populationData;
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public WeatherData getWeather(String area) {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            JsonNode areas = null;
+            areas = objectMapper.readTree(new URL(String.format(CONVERTER_BASE_URL, area, API_KEY)));
+
+            String lat= areas.get(0).get("lat").toString();
+            String longi = areas.get(0).get("lon").toString();
+
+            JsonNode weatherData;
+            weatherData = objectMapper.readTree(new URL(String.format(WEATHER_BASE_URL, lat, longi, API_KEY)));
+
+            WeatherData wData = new WeatherData(
+                    weatherData.get("name").asText(),
+                    weatherData.get("weather").get(0).get("main").asText(),
+                    weatherData.get("weather").get(0).get("description").asText(),
+                    weatherData.get("main").get("temp").asText()
+            );
+            return wData;
+
+        } catch (NullPointerException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
