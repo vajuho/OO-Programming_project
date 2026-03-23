@@ -52,7 +52,7 @@ public class DataRetriever {
         code = municipalityCodes.get(area);
 
         try {
-            URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/Kuntien_avainluvut/2025/kuntien_avainluvut_2025_aikasarja.px");
+            URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/synt/statfin_synt_pxt_12dy.px");
 
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
@@ -78,20 +78,107 @@ public class DataRetriever {
 
             ArrayList<String> years = new ArrayList<>();
             ArrayList<String> populations = new ArrayList<>();
+            ArrayList<String> populationIncrease = new ArrayList<>();
 
-            for (JsonNode node : data.get("Vuosi").get("category").get("label")) {
+            int counter = 0;
+
+            for (JsonNode node : data.get("dimension").get("Vuosi").get("category").get("label")) {
                 years.add(node.asText());
             }
 
             for (JsonNode node : data.get("value")) {
-                populations.add(node.asText());
+                if (counter % 2 == 0) {
+                    populationIncrease.add(node.asText());
+                }
+                else {
+                    populations.add(node.asText());
+                }
+                counter ++;
             }
 
             ArrayList<PopulationData> populationData = new ArrayList<>();
+
             for (int i = 0; i < years.size(); i++) {
-                populationData.add(new PopulationData(Integer.valueOf(years.get(i)), Integer.valueOf(populations.get(i))));
+                populationData.add(new PopulationData(Integer.valueOf(years.get(i)), Integer.valueOf(populations.get(i)), Integer.valueOf(populationIncrease.get(i))));
             }
             return populationData;
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String getEmploymentRate(Context context, String area) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode areas = null;
+        try {
+            areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<String> keys = new ArrayList<>();
+        ArrayList<String> values = new ArrayList<>();
+
+        for (JsonNode node : areas.get("variables").get(1).get("values")) {
+            values.add(node.asText());
+        }
+        for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
+            keys.add(node.asText());
+        }
+
+        HashMap<String, String> municipalityCodes = new HashMap<>();
+
+        for (int i = 0; i < keys.size(); i++) {
+            municipalityCodes.put(keys.get(i), values.get(i));
+        }
+        String code = null;
+        code = null;
+        code = municipalityCodes.get(area);
+
+        try {
+            URL url = new URL("https://pxdata.stat.fi/PxWeb/pxweb/fi/StatFin/StatFin__tyokay/statfin_tyokay_pxt_115x.px");
+
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+            JsonNode jsonInputString = objectMapper.readTree(context.getResources().openRawResource(R.raw.employmentratesearch));
+
+            ((ObjectNode) jsonInputString.get("query").get(0).get("selection")).putArray("values").add(code);
+
+            byte[] input = objectMapper.writeValueAsBytes(jsonInputString);
+            OutputStream os = con.getOutputStream();
+            os.write(input, 0, input.length);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+            StringBuilder response = new StringBuilder();
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                response.append(line.trim());
+            }
+            JsonNode data = objectMapper.readTree(response.toString());
+
+            ArrayList<String> years = new ArrayList<>();
+            ArrayList<String> populations = new ArrayList<>();
+            ArrayList<String> populationIncrease = new ArrayList<>();
+            int counter = 0;
+
+            JsonNode labels = data.get("dimension").get("Vuosi").get("category").get("label");
+            String year = labels.get(String.valueOf(labels.size() - 1)).asText();
+
+            JsonNode rates = data.get("value");
+            String rate = values.get(rates.size() - 1);
+            String yearPlusRate = year + ": " + rate;
+
+            return yearPlusRate;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
