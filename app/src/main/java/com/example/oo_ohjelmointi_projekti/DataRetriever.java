@@ -328,6 +328,44 @@ public class DataRetriever {
         return null;
     }
 
+    public ArrayList<String> getWikiData(String area) {
+        try {
+            String urlString = "https://fi.wikipedia.org/api/rest_v1/page/summary/" + area;
+
+            URL url = new URL(urlString);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            StringBuilder response = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+            reader.close();
+
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode json = mapper.readTree(response.toString());
+
+            String description = json.get("description").asText();
+            String pageUrl = json.get("content_urls").get("desktop").get("page").asText();
+
+            ArrayList<String> wikiData = new ArrayList<>();
+            wikiData.add(description);
+            wikiData.add(pageUrl);
+
+            return wikiData;
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public WeatherData getWeather(String area) {
         ObjectMapper objectMapper = new ObjectMapper();
 
