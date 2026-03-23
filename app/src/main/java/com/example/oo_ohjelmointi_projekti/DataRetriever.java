@@ -111,6 +111,83 @@ public class DataRetriever {
         return null;
     }
 
+    public String getEmploymentRate(Context context, String area) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode areas = null;
+        try {
+            areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<String> keys = new ArrayList<>();
+        ArrayList<String> values = new ArrayList<>();
+
+        for (JsonNode node : areas.get("variables").get(1).get("values")) {
+            values.add(node.asText());
+        }
+        for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
+            keys.add(node.asText());
+        }
+
+        HashMap<String, String> municipalityCodes = new HashMap<>();
+
+        for (int i = 0; i < keys.size(); i++) {
+            municipalityCodes.put(keys.get(i), values.get(i));
+        }
+        String code = null;
+        code = null;
+        code = municipalityCodes.get(area);
+
+        try {
+            URL url = new URL("https://pxdata.stat.fi/PxWeb/pxweb/fi/StatFin/StatFin__tyokay/statfin_tyokay_pxt_115x.px");
+
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+            JsonNode jsonInputString = objectMapper.readTree(context.getResources().openRawResource(R.raw.employmentratesearch));
+
+            ((ObjectNode) jsonInputString.get("query").get(0).get("selection")).putArray("values").add(code);
+
+            byte[] input = objectMapper.writeValueAsBytes(jsonInputString);
+            OutputStream os = con.getOutputStream();
+            os.write(input, 0, input.length);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+            StringBuilder response = new StringBuilder();
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                response.append(line.trim());
+            }
+            JsonNode data = objectMapper.readTree(response.toString());
+
+            ArrayList<String> years = new ArrayList<>();
+            ArrayList<String> populations = new ArrayList<>();
+            ArrayList<String> populationIncrease = new ArrayList<>();
+            int counter = 0;
+
+            JsonNode labels = data.get("dimension").get("Vuosi").get("category").get("label");
+            String year = labels.get(String.valueOf(labels.size() - 1)).asText();
+
+            JsonNode rates = data.get("value");
+            String rate = values.get(rates.size() - 1);
+            String yearPlusRate = year + ": " + rate;
+
+            return yearPlusRate;
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public WeatherData getWeather(String area) {
         ObjectMapper objectMapper = new ObjectMapper();
 
