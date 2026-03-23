@@ -52,7 +52,7 @@ public class DataRetriever {
         code = municipalityCodes.get(area);
 
         try {
-            URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/Kuntien_avainluvut/2025/kuntien_avainluvut_2025_aikasarja.px");
+            URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/synt/statfin_synt_pxt_12dy.px");
 
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
@@ -78,18 +78,28 @@ public class DataRetriever {
 
             ArrayList<String> years = new ArrayList<>();
             ArrayList<String> populations = new ArrayList<>();
+            ArrayList<String> populationIncrease = new ArrayList<>();
 
-            for (JsonNode node : data.get("Vuosi").get("category").get("label")) {
+            int counter = 0;
+
+            for (JsonNode node : data.get("dimension").get("Vuosi").get("category").get("label")) {
                 years.add(node.asText());
             }
 
             for (JsonNode node : data.get("value")) {
-                populations.add(node.asText());
+                if (counter % 2 == 0) {
+                    populationIncrease.add(node.asText());
+                }
+                else {
+                    populations.add(node.asText());
+                }
+                counter ++;
             }
 
             ArrayList<PopulationData> populationData = new ArrayList<>();
+
             for (int i = 0; i < years.size(); i++) {
-                populationData.add(new PopulationData(Integer.valueOf(years.get(i)), Integer.valueOf(populations.get(i))));
+                populationData.add(new PopulationData(Integer.valueOf(years.get(i)), Integer.valueOf(populations.get(i)), Integer.valueOf(populationIncrease.get(i))));
             }
             return populationData;
 
