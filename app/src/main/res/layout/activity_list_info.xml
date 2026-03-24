@@ -216,26 +216,26 @@
         app:layout_constraintTop_toBottomOf="@+id/CityDescriptionText" />
 
     <Button
-        android:id="@+id/GoToCompareButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:id="@+id/GoToCompareSearchButton"
+        android:layout_width="166dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="52dp"
         android:text="Siirry vertailuun"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WeatherDescriptionText" />
 
     <Button
         android:id="@+id/GoToVisaButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="167dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:text="Siirry visaan"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GoToCompareButton" />
+        app:layout_constraintTop_toBottomOf="@+id/GoToCompareSearchButton" />
 
     <Button
         android:id="@+id/GoToHomeButton"
@@ -244,7 +244,7 @@
         android:layout_marginTop="8dp"
         android:text="Siirry kuntahakuun"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GoToVisaButton" />
 
