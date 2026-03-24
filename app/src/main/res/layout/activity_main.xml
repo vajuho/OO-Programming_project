@@ -39,8 +39,8 @@
         app:layout_constraintTop_toBottomOf="@+id/CityNameEdit"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ListView
-        android:id="@+id/SearchedCitiesListView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/SearchedCitiesRV"
         android:layout_width="351dp"
         android:layout_height="260dp"
         android:layout_marginStart="30dp"
@@ -60,7 +60,7 @@
         android:layout_marginBottom="8dp"
         android:text="Viimeksi haetut kunnat:"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/SearchedCitiesListView"
+        app:layout_constraintBottom_toTopOf="@+id/SearchedCitiesRV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
