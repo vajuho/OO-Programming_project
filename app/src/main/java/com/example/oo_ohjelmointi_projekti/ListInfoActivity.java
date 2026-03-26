@@ -50,7 +50,8 @@ public class ListInfoActivity extends AppCompatActivity {
         weatherDescriptionText.setText(municipalityData.getWeather().getDescription());
         carAmountText.setText(municipalityData.getCarData().getCarAmount());
 
-
+        // Tähän tulee if-elif-else hommeli (tai nörö switch-case) :)
+        carImageView.setImageResource(R.drawable.car_tier_1);
 
 
 
