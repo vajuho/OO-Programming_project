@@ -7,10 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class LatestCityViewHolder extends RecyclerView.ViewHolder {
-
+    public Button municipalityButton;
     public LatestCityViewHolder(@NonNull View itemView) {
         super(itemView);
-
-        Button municipalityButton = itemView.findViewById(R.id.cityButton);
+        municipalityButton = itemView.findViewById(R.id.cityButton);
     }
 }

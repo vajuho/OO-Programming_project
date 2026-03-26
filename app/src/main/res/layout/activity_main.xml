@@ -31,6 +31,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="168dp"
         android:layout_marginBottom="615dp"
+        android:onClick="searchDataMainActivity"
         android:text="Hae tiedot"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -22,6 +22,7 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity {
     TextView StatusText;
     EditText CityNameEdit;
+    LatestCityAdapter cityAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +38,22 @@ public class MainActivity extends AppCompatActivity {
         CityNameEdit = findViewById(R.id.CityNameEdit);
         StatusText = findViewById(R.id.StatusText);
 
+        cityAdapter = new LatestCityAdapter(getApplicationContext(), cityName -> {
+            CityNameEdit.setText(cityName);
+            searchData(cityName);
+        });
+
         RecyclerView RecyclerView = findViewById(R.id.SearchedCitiesRV);
-
         RecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerView.setAdapter(new LatestCityAdapter(getApplicationContext(), ));
+        RecyclerView.setAdapter(cityAdapter);
     }
-
-    public void searchData(View view) {
+    public void searchDataMainActivity(View view) {
+        String municipality = CityNameEdit.getText().toString().trim();
+        if (!municipality.isEmpty()) {
+            searchData(municipality);
+        }
+    }
+    private void searchData(String cityName) {
         Context context = this;
         DataRetriever dr = new DataRetriever();
         ExecutorService service = Executors.newSingleThreadExecutor();
@@ -56,12 +66,12 @@ public class MainActivity extends AppCompatActivity {
         service.execute(new Runnable() {
             @Override
             public void run() {
-                ArrayList<PopulationData> populationDataList = dr.getPopulation(context, CityNameEdit.getText().toString());
-                String employmentRate = dr.getEmploymentRate(context, CityNameEdit.getText().toString());
-                String employmentSelfSufficiency = dr.getEmploymentSelfSufficiency(context, CityNameEdit.getText().toString());
-                String carAmount = dr.getCarAmount(context, CityNameEdit.getText().toString());
-                ArrayList<String> wikiDataList = dr.getWikiData(CityNameEdit.getText().toString());
-                WeatherData weatherData = dr.getWeather(CityNameEdit.getText().toString());
+                ArrayList<PopulationData> populationDataList = dr.getPopulation(context, cityName);
+                String employmentRate = dr.getEmploymentRate(context, cityName);
+                String employmentSelfSufficiency = dr.getEmploymentSelfSufficiency(context, cityName);
+                String carAmount = dr.getCarAmount(context, cityName);
+                ArrayList<String> wikiDataList = dr.getWikiData(cityName);
+                WeatherData weatherData = dr.getWeather(cityName);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -73,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                         PopulationDataStorage populationStorage = PopulationDataStorage.getInstance();
                         MunicipalityData municipalityDataStorage = MunicipalityData.getInstance();
 
-                        populationStorage.setMunicipality(CityNameEdit.getText().toString());
+                        populationStorage.setMunicipality(cityName);
                         for (PopulationData i : populationDataList) {
                             populationStorage.addPopulationData(new PopulationData(i.getYear(), i.getAmount(), i.getPopulationIncrease()));
                         }
@@ -87,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                         municipalityDataStorage.setWeather(weatherData);
 
+                        cityAdapter.addCity(cityName);
                         StatusText.setText("Haku onnistui");
                     }
                 });
