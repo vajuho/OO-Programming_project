@@ -7,7 +7,7 @@ public class MunicipalityData {
 
     private CarData carData;
 
-    private WikipediaData wikiUrl;
+    private WikipediaData wikiData;
 
     private EmploymentData employmentData;
 
@@ -40,12 +40,12 @@ public class MunicipalityData {
         this.carData = carData;
     }
 
-    public WikipediaData getWikiUrl() {
-        return wikiUrl;
+    public WikipediaData getWikiData() {
+        return wikiData;
     }
 
-    public void setWikiUrl(WikipediaData wikiUrl) {
-        this.wikiUrl = wikiUrl;
+    public void setWikidata(WikipediaData wikiData) {
+        this.wikiData = wikiData;
     }
 
     public EmploymentData getEmploymentData() {
