@@ -40,8 +40,8 @@ public class ListInfoActivity extends AppCompatActivity {
         PopulationDataStorage populationDataStorage = PopulationDataStorage.getInstance();
 
         cityNameText.setText(populationDataStorage.getMunicipality());
-        cityDescriptionText.setText(municipalityData.getWikiUrl().getWikiUrl().get(0));
-        cityWikiUrlText.setText(municipalityData.getWikiUrl().getWikiUrl().get(1));
+        cityDescriptionText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(0));
+        cityWikiUrlText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(1));
         populationAmountText.setText(String.valueOf(municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount()));
         populationChangeText.setText(String.valueOf(municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease()));
         employmentRateText.setText(municipalityData.getEmploymentData().getEmploymentRate());
@@ -49,7 +49,6 @@ public class ListInfoActivity extends AppCompatActivity {
         temperatureText.setText(municipalityData.getWeather().getTemperature());
         weatherDescriptionText.setText(municipalityData.getWeather().getDescription());
         carAmountText.setText(municipalityData.getCarData().getCarAmount());
-
 
 
 
