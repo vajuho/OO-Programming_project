@@ -166,11 +166,6 @@ public class DataRetriever {
             }
             JsonNode data = objectMapper.readTree(response.toString());
 
-            ArrayList<String> years = new ArrayList<>();
-            ArrayList<String> populations = new ArrayList<>();
-            ArrayList<String> populationIncrease = new ArrayList<>();
-            int counter = 0;
-
             JsonNode labels = data.get("dimension").get("Vuosi").get("category").get("label");
             String year = labels.get(String.valueOf(labels.size() - 1)).asText();
 
