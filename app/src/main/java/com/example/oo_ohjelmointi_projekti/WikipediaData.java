@@ -1,17 +1,19 @@
 package com.example.oo_ohjelmointi_projekti;
 
-public class WikipediaData {
-    private String wikiUrl;
+import java.util.ArrayList;
 
-    public WikipediaData(String wikiUrl) {
+public class WikipediaData {
+    private ArrayList<String> wikiUrl;
+
+    public WikipediaData(ArrayList<String> wikiUrl) {
         this.wikiUrl = wikiUrl;
     }
 
-    public String getWikiUrl() {
+    public ArrayList<String>getWikiUrl() {
         return wikiUrl;
     }
 
-    public void setWikiUrl(String wikiUrl) {
+    public void setWikiUrl(ArrayList<String> wikiUrl) {
         this.wikiUrl = wikiUrl;
     }
 
