@@ -13,31 +13,54 @@ public class MunicipalityData {
 
     private ArrayList<PopulationData> populations;
 
-    public MunicipalityData(WeatherData weather, CarData carData, WikipediaData wikiUrl, EmploymentData employmentData, ArrayList<PopulationData> populations) {
-        this.weather = weather;
-        this.carData = carData;
-        this.wikiUrl = wikiUrl;
-        this.employmentData = employmentData;
-        this.populations = populations;
+    private static MunicipalityData instance;
+    private MunicipalityData() {
+    }
+
+    public static MunicipalityData getInstance() {
+        if (instance == null) {
+            instance = new MunicipalityData();
+        }
+        return instance;
     }
 
     public WeatherData getWeather() {
         return weather;
     }
 
+    public void setWeather(WeatherData weather) {
+        this.weather = weather;
+    }
+
     public CarData getCarData() {
         return carData;
+    }
+
+    public void setCarData(CarData carData) {
+        this.carData = carData;
     }
 
     public WikipediaData getWikiUrl() {
         return wikiUrl;
     }
 
-    public ArrayList<PopulationData> getPopulations() {
-        return populations;
+    public void setWikiUrl(WikipediaData wikiUrl) {
+        this.wikiUrl = wikiUrl;
     }
 
     public EmploymentData getEmploymentData() {
         return employmentData;
+    }
+
+    public void setEmploymentData(EmploymentData employmentData) {
+        this.employmentData = employmentData;
+    }
+
+    public ArrayList<PopulationData> getPopulations() {
+        return populations;
+    }
+
+    public void setPopulations(ArrayList<PopulationData> populations) {
+        this.populations = populations;
     }
 }
