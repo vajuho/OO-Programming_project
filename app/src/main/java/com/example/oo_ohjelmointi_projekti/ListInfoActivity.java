@@ -32,27 +32,18 @@ public class ListInfoActivity extends AppCompatActivity {
         TextView temperatureText = findViewById(R.id.TemperatureText);
         TextView weatherDescriptionText = findViewById(R.id.WeatherDescriptionText);
         TextView carAmountText = findViewById(R.id.CarAmountText);
-        ImageView CarImageView = findViewById(R.id.CarImageView);
+        ImageView carImageView = findViewById(R.id.CarImageView);
 
-        /*CarDataStorage storage = CarDataStorage.getInstance();
+        MunicipalityData municipalityData = MunicipalityData.getInstance();
+        PopulationDataStorage populationDataStorage = PopulationDataStorage.getInstance();
+        WikipediaData wikipediaData = new WikipediaData();
 
-        cityText.setText(storage.getCity());
-        yearText.setText(String.valueOf(storage.getYear()));
+        cityNameText.setText(populationDataStorage.getMunicipality());
+        cityDescriptionText.setText(wikipediaData.getWikiUrl().get(0));
+        cityWikiUrlText.setText(wikipediaData.getWikiUrl().get(1));
+        populationAmountText.setText()
 
-        StringBuilder builder = new StringBuilder();
-        int total = 0;
 
-        for(CarData car : storage.getCarData()){
-            builder.append(car.getType());
-            builder.append(": ");
-            builder.append(car.getAmount());
-            builder.append("\n");
 
-            total = total + car.getAmount();
-        }
-
-        builder.append("\nYhteensä: ").append(total);
-
-        carInfoText.setText(builder.toString());*/
     }
 }
