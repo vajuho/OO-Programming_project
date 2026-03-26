@@ -12,9 +12,4 @@ public class WikipediaData {
     public ArrayList<String> getWikiUrlAndDescription() {
         return wikiData;
     }
-
-    public void setWikiUrlAndDescription(ArrayList<String> wikiData) {
-        this.wikiData = wikiData;
-    }
-
 }

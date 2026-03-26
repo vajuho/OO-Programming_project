@@ -10,8 +10,4 @@ public class CarData {
     public String getCarAmount() {
         return carAmount;
     }
-
-    public void setCarAmount(String carAmount) {
-        this.carAmount = carAmount;
-    }
 }

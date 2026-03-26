@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         CityNameEdit = findViewById(R.id.CityNameEdit);
         StatusText = findViewById(R.id.StatusText);
 
-        PopulationDataStorage populationStorage = PopulationDataStorage.getInstance();
-
         RecyclerView RecyclerView = findViewById(R.id.SearchedCitiesRV);
 
         RecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -72,6 +70,22 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
 
+                        PopulationDataStorage populationStorage = PopulationDataStorage.getInstance();
+                        MunicipalityData municipalityDataStorage = MunicipalityData.getInstance();
+
+                        populationStorage.setMunicipality(CityNameEdit.getText().toString());
+                        for (PopulationData i : populationDataList) {
+                            populationStorage.addPopulationData(new PopulationData(i.getYear(), i.getAmount(), i.getPopulationIncrease()));
+                        }
+                        municipalityDataStorage.setPopulations(populationStorage.getPopulationList());
+
+                        municipalityDataStorage.setEmploymentData(new EmploymentData(employmentRate, employmentSelfSufficiency));
+
+                        municipalityDataStorage.setCarData(new CarData(carAmount));
+
+                        municipalityDataStorage.setWikidata(new WikipediaData(wikiDataList));
+
+                        municipalityDataStorage.setWeather(weatherData);
 
                         StatusText.setText("Haku onnistui");
                     }
