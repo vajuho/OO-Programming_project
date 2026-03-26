@@ -13,6 +13,9 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 
 public class ListInfoActivity extends AppCompatActivity {
+    private final int tierOne = 2000;
+    private final int tierTwo = 10000;
+    private final int tierThree = 50000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +53,16 @@ public class ListInfoActivity extends AppCompatActivity {
         weatherDescriptionText.setText(municipalityData.getWeather().getDescription());
         carAmountText.setText(municipalityData.getCarData().getCarAmount());
 
-        // Tähän tulee if-elif-else hommeli (tai nörö switch-case) :)
-        carImageView.setImageResource(R.drawable.car_tier_1);
+        int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
 
-
-
+        if (carAmount < tierOne) {
+            carImageView.setImageResource(R.drawable.car_tier_1);
+        } else if (tierOne <= carAmount && carAmount < tierTwo) {
+            carImageView.setImageResource(R.drawable.car_tier_2);
+        } else if (tierTwo <= carAmount && carAmount < tierThree) {
+            carImageView.setImageResource(R.drawable.car_tier_3);
+        } else {
+            carImageView.setImageResource(R.drawable.car_tier_4);
+        }
     }
 }
