@@ -10,6 +10,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class ListInfoActivity extends AppCompatActivity {
 
     @Override
@@ -36,12 +38,20 @@ public class ListInfoActivity extends AppCompatActivity {
 
         MunicipalityData municipalityData = MunicipalityData.getInstance();
         PopulationDataStorage populationDataStorage = PopulationDataStorage.getInstance();
-        WikipediaData wikipediaData = new WikipediaData();
 
         cityNameText.setText(populationDataStorage.getMunicipality());
-        cityDescriptionText.setText(wikipediaData.getWikiUrl().get(0));
-        cityWikiUrlText.setText(wikipediaData.getWikiUrl().get(1));
-        populationAmountText.setText()
+        cityDescriptionText.setText(municipalityData.getWikiUrl().getWikiUrl().get(0));
+        cityWikiUrlText.setText(municipalityData.getWikiUrl().getWikiUrl().get(1));
+        populationAmountText.setText(String.valueOf(municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount()));
+        populationChangeText.setText(String.valueOf(municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease()));
+        employmentRateText.setText(municipalityData.getEmploymentData().getEmploymentRate());
+        employmentSelfSufficiencyText.setText(municipalityData.getEmploymentData().getEmploymentSelfSufficiency());
+        temperatureText.setText(municipalityData.getWeather().getTemperature());
+        weatherDescriptionText.setText(municipalityData.getWeather().getDescription());
+        carAmountText.setText(municipalityData.getCarData().getCarAmount());
+
+
+
 
 
 
