@@ -13,9 +13,6 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 
 public class ListInfoActivity extends AppCompatActivity {
-    private final int tierOne = 2000;
-    private final int tierTwo = 10000;
-    private final int tierThree = 50000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +51,10 @@ public class ListInfoActivity extends AppCompatActivity {
         carAmountText.setText(municipalityData.getCarData().getCarAmount());
 
         int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
+
+        int tierOne = 2000;
+        int tierTwo = 10000;
+        int tierThree = 50000;
 
         if (carAmount < tierOne) {
             carImageView.setImageResource(R.drawable.car_tier_1);
