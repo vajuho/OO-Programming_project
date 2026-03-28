@@ -69,6 +69,8 @@ public class CityInfoFragment extends Fragment {
         } else {
             carImageView.setImageResource(R.drawable.car_tier_4);
         }
+
+        return view;
     }
 
     }
