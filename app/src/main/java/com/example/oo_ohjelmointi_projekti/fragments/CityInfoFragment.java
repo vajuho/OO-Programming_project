@@ -44,33 +44,44 @@ public class CityInfoFragment extends Fragment {
         MunicipalityData municipalityData = MunicipalityData.getInstance();
 
         cityNameText.setText(populationDataStorage.getMunicipality());
-        cityDescriptionText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(0));
-        cityWikiUrlText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(1));
-        populationAmountText.setText(String.valueOf("Väkiluku: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount()));
-        populationChangeText.setText(String.valueOf("Väestönmuutos: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease()));
-        employmentRateText.setText("Työllisyysaste vuonna " + municipalityData.getEmploymentData().getEmploymentRate() + "%");
-        employmentSelfSufficiencyText.setText("Työpaikkojen omavaraisuus vuonna " + municipalityData.getEmploymentData().getEmploymentSelfSufficiency() + "%");
-        temperatureText.setText(String.format("Lämpötila nyt: %.1f °C", municipalityData.getWeather().getTemperature()));
-        weatherDescriptionText.setText("Sää nyt: " + municipalityData.getWeather().getDescription());
-        carAmountText.setText("Autojen määrä: " + municipalityData.getCarData().getCarAmount());
-
-        int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
-
-        int tierOne = 2000;
-        int tierTwo = 10000;
-        int tierThree = 50000;
-
-        if (carAmount < tierOne) {
-            carImageView.setImageResource(R.drawable.car_tier_1);
-        } else if (tierOne <= carAmount && carAmount < tierTwo) {
-            carImageView.setImageResource(R.drawable.car_tier_2);
-        } else if (tierTwo <= carAmount && carAmount < tierThree) {
-            carImageView.setImageResource(R.drawable.car_tier_3);
-        } else {
-            carImageView.setImageResource(R.drawable.car_tier_4);
+        if (municipalityData.getWikiData() != null) {
+            cityDescriptionText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(0));
+            cityWikiUrlText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(1));
         }
 
+        if (municipalityData.getPopulations() != null) {
+            populationAmountText.setText("Väkiluku: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount());
+            populationChangeText.setText("Väestönmuutos: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease());
+        }
+
+        if (municipalityData.getEmploymentData() != null) {
+            employmentRateText.setText("Työllisyysaste vuonna " + municipalityData.getEmploymentData().getEmploymentRate() + "%");
+            employmentSelfSufficiencyText.setText("Työpaikkojen omavaraisuus vuonna " + municipalityData.getEmploymentData().getEmploymentSelfSufficiency() + "%");
+        }
+
+        if (municipalityData.getWeather() != null) {
+            temperatureText.setText(String.format("Lämpötila nyt: %.1f °C", municipalityData.getWeather().getTemperature()));
+            weatherDescriptionText.setText("Sää nyt: " + municipalityData.getWeather().getDescription());
+        }
+
+        if (municipalityData.getCarData() != null && municipalityData.getCarData().getCarAmount() != null) {
+            carAmountText.setText("Autojen määrä: " + municipalityData.getCarData().getCarAmount());
+
+            int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
+            int tierOne = 2000;
+            int tierTwo = 10000;
+            int tierThree = 50000;
+
+            if (carAmount < tierOne) {
+                carImageView.setImageResource(R.drawable.car_tier_1);
+            } else if (tierOne <= carAmount && carAmount < tierTwo) {
+                carImageView.setImageResource(R.drawable.car_tier_2);
+            } else if (tierTwo <= carAmount && carAmount < tierThree) {
+                carImageView.setImageResource(R.drawable.car_tier_3);
+            } else {
+                carImageView.setImageResource(R.drawable.car_tier_4);
+            }
+        }
         return view;
     }
-
-    }
+}

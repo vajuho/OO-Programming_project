@@ -364,6 +364,9 @@ public class DataRetriever {
         try {
             JsonNode areas = null;
             areas = objectMapper.readTree(new URL(String.format(CONVERTER_BASE_URL, area, API_KEY)));
+            if (areas == null || areas.size() == 0) {
+                return null;
+            }
 
             String lat= areas.get(0).get("lat").toString();
             String longi = areas.get(0).get("lon").toString();
