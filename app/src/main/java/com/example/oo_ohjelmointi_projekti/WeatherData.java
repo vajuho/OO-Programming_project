@@ -28,4 +28,5 @@ public class WeatherData {
         double temperatureCelsius = temperatureKelvin - 273.15;
         return temperatureCelsius;
     }
+    //Tämä on testi
 }
