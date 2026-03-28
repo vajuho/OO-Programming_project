@@ -23,7 +23,9 @@ public class WeatherData {
         return description;
     }
 
-    public String getTemperature() {
-        return temperature;
+    public double getTemperature() {
+        double temperatureKelvin = Double.parseDouble(temperature);
+        double temperatureCelsius = temperatureKelvin - 273.15;
+        return temperatureCelsius;
     }
 }
