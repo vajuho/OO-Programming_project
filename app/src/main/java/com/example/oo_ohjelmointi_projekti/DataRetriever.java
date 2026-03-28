@@ -239,7 +239,6 @@ public class DataRetriever {
                 year2 = node.asText();
             }
             System.out.println("Vuosi: " + year2);
-            //String year2 = labels.get(String.valueOf(labels.size() - 1)).asText();
 
             JsonNode sufficiencyValues = data.get("value");
             String sufficiency = sufficiencyValues.get(sufficiencyValues.size() - 1).asText();
