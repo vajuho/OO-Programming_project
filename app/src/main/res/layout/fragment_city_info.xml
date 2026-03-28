@@ -70,27 +70,29 @@
         android:text="Väestönmuutos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PopulationAmountText" />
+        app:layout_constraintTop_toBottomOf="@+id/CityOnePopulationAmountText" />
 
     <TextView
-        android:id="@+id/cityWikiUrlText"
+        android:id="@+id/CityWikiUrlText"
         android:layout_width="318dp"
         android:layout_height="23dp"
         android:layout_marginTop="8dp"
         android:text="Url"
+        android:autoLink="web"
+        android:linksClickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CityDescriptionText" />
 
     <TextView
-        android:id="@+id/PopulationAmountText"
+        android:id="@+id/CityOnePopulationAmountText"
         android:layout_width="318dp"
         android:layout_height="23dp"
         android:layout_marginTop="8dp"
         android:text="Väkiluku"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityWikiUrlText" />
+        app:layout_constraintTop_toBottomOf="@+id/CityWikiUrlText" />
 
     <TextView
         android:id="@+id/CityDescriptionText"
@@ -100,10 +102,10 @@
         android:text="Kuvaus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CityNameText" />
+        app:layout_constraintTop_toBottomOf="@+id/CityOneNameText" />
 
     <TextView
-        android:id="@+id/CityNameText"
+        android:id="@+id/CityOneNameText"
         android:layout_width="318dp"
         android:layout_height="23dp"
         android:layout_marginTop="44dp"

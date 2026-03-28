@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.example.oo_ohjelmointi_projekti.MunicipalityData;
 import com.example.oo_ohjelmointi_projekti.PopulationDataStorage;
 import com.example.oo_ohjelmointi_projekti.R;
-import com.example.oo_ohjelmointi_projekti.WeatherData;
 
 public class CityInfoFragment extends Fragment {
 
@@ -29,10 +28,10 @@ public class CityInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_city_info, container, false);
 
-        TextView cityNameText = view.findViewById(R.id.CityNameText);
+        TextView cityNameText = view.findViewById(R.id.CityOneNameText);
         TextView cityDescriptionText = view.findViewById(R.id.CityDescriptionText);
-        TextView cityWikiUrlText = view.findViewById(R.id.cityWikiUrlText);
-        TextView populationAmountText = view.findViewById(R.id.PopulationAmountText);
+        TextView cityWikiUrlText = view.findViewById(R.id.CityWikiUrlText);
+        TextView populationAmountText = view.findViewById(R.id.CityOnePopulationAmountText);
         TextView populationChangeText = view.findViewById(R.id.PopulationChangeText);
         TextView employmentRateText = view.findViewById(R.id.EmploymentRateText);
         TextView employmentSelfSufficiencyText = view.findViewById(R.id.EmploymentSelfSufficiencyText);
