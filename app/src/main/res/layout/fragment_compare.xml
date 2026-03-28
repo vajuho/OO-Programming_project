@@ -1,14 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.CompareFragment">
+    tools:context=".fragments.CityInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/CityTwoNameText"
+        android:layout_width="137dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="72dp"
+        android:text="Kunta 2 nimi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/CityTwoPopulationAmountText"
+        android:layout_width="162dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="16dp"
+        android:text="Kunta 2 väkiluku"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CityTwoNameText" />
+
+    <TextView
+        android:id="@+id/CityTwoTemperatureText"
+        android:layout_width="158dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="16dp"
+        android:text="Kunta 2 lämpötila"
+        app:layout_constraintTop_toBottomOf="@+id/CityTwoPopulationAmountText"
+        tools:layout_editor_absoluteX="223dp" />
+
+    <TextView
+        android:id="@+id/CityOnePopulationAmountText"
+        android:layout_width="162dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="16dp"
+        android:text="Kunta 1 väkiluku"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CityOneNameText" />
+
+    <TextView
+        android:id="@+id/CityOneNameText"
+        android:layout_width="137dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="72dp"
+        android:text="Kunta 1 nimi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CityOneTemperatureText"
+        android:layout_width="158dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="16dp"
+        android:text="Kunta 1 lämpötila"
+        app:layout_constraintTop_toBottomOf="@+id/CityOnePopulationAmountText"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <TextView
+        android:id="@+id/Heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Kuntien vertailu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
