@@ -7,7 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.oo_ohjelmointi_projekti.MunicipalityData;
+import com.example.oo_ohjelmointi_projekti.PopulationDataStorage;
 import com.example.oo_ohjelmointi_projekti.R;
 
 public class CityInfoFragment extends Fragment {
@@ -22,7 +26,22 @@ public class CityInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_city_info, container, false);
+        View view = inflater.inflate(R.layout.fragment_city_info, container, false);
+
+        TextView cityNameText = view.findViewById(R.id.CityNameText);
+        TextView cityDescriptionText = view.findViewById(R.id.CityDescriptionText);
+        TextView cityWikiUrlText = view.findViewById(R.id.cityWikiUrlText);
+        TextView populationAmountText = view.findViewById(R.id.PopulationAmountText);
+        TextView populationChangeText = view.findViewById(R.id.PopulationChangeText);
+        TextView employmentRateText = view.findViewById(R.id.EmploymentRateText);
+        TextView employmentSelfSufficiencyText = view.findViewById(R.id.EmploymentSelfSufficiencyText);
+        TextView temperatureText = view.findViewById(R.id.TemperatureText);
+        TextView weatherDescriptionText = view.findViewById(R.id.WeatherDescriptionText);
+        TextView carAmountText = view.findViewById(R.id.CarAmountText);
+        ImageView carImageView = view.findViewById(R.id.CarImageView);
+
+        PopulationDataStorage populationDataStorage = PopulationDataStorage.getInstance();
+        MunicipalityData municipalityData = MunicipalityData.getInstance();
 
         cityNameText.setText(populationDataStorage.getMunicipality());
         cityDescriptionText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(0));
