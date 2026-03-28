@@ -54,7 +54,7 @@ public class CompareFragment extends Fragment {
         TextView CityOneTemperatureText = view.findViewById(R.id.CityOneTemperatureText);
         TextView CityTwoTemperatureText = view.findViewById(R.id.CityTwoTemperatureText);
 
-        City0neNameText.setText(cityOne.getWeather().getName());
+        City0neNameText.setText(PopulationDataStorage.getInstance().getMunicipality());
         CityTwoNameText.setText(cityTwo.getName());
         CityOnePopulationAmountText.setText("Väkiluku: " + cityOnePopulation);
         CityTwoPopulationAmountText.setText(String.valueOf(cityTwoPopulation));
