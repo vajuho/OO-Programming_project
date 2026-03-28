@@ -1,6 +1,8 @@
 package com.example.oo_ohjelmointi_projekti;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,5 +26,13 @@ public class ListInfoActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+    public void goToCityForCompareActivity(View view) {
+        Intent intent = new Intent(this, CityForCompareActivity.class);
+        startActivity(intent);
+    }
+    public void goToHome(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
