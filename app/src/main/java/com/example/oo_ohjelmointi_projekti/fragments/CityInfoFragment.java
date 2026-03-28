@@ -43,7 +43,7 @@ public class CityInfoFragment extends Fragment {
         PopulationDataStorage populationDataStorage = PopulationDataStorage.getInstance();
         MunicipalityData municipalityData = MunicipalityData.getInstance();
 
-        cityNameText.setText("Väkiluku: " + populationDataStorage.getMunicipality());
+        cityNameText.setText(populationDataStorage.getMunicipality());
         cityDescriptionText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(0));
         cityWikiUrlText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(1));
         populationAmountText.setText(String.valueOf("Väkiluku: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount()));
