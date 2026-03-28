@@ -15,7 +15,7 @@
         android:onClick="goToCityForCompareActivity"
         android:text="Siirry vertailuun"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,22 +23,24 @@
         android:id="@+id/GoToVisaButton"
         android:layout_width="120dp"
         android:layout_height="53dp"
+        android:layout_marginTop="4dp"
         android:text="Siirry visaan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toEndOf="@+id/GoToCompareSearchButton"
-        tools:layout_editor_absoluteY="4dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/GoToHomeButton"
         android:layout_width="142dp"
         android:layout_height="54dp"
+        android:layout_marginTop="4dp"
         android:onClick="goToHome"
         android:text="Siirry kuntahakuun"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.992"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="2dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/InfoFragmentLayout"

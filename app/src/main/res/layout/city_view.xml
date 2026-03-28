@@ -6,7 +6,7 @@
 
     <Button
         android:id="@+id/cityButton"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Widget.Material3.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/white"

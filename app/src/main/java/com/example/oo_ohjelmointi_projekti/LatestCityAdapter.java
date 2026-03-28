@@ -1,6 +1,7 @@
 package com.example.oo_ohjelmointi_projekti;
 
 import android.content.Context;
+import android.hardware.camera2.CameraExtensionSession;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -31,22 +32,22 @@ public class LatestCityAdapter extends RecyclerView.Adapter<LatestCityViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull LatestCityViewHolder holder, int position) {
-        String cityName = latestCities.get(position);
+        ArrayList<String> cities = LatestCities.getInstance().getCities();
+        if (position >= cities.size()) {
+            return;
+        }
+        String cityName = cities.get(position);
         holder.municipalityButton.setText(cityName);
         holder.municipalityButton.setOnClickListener(view -> listener.onCityClick(cityName));
     }
 
     @Override
     public int getItemCount() {
-        return latestCities.size();
+        return LatestCities.getInstance().getCities().size();
     }
 
     public void addCity(String cityName) {
-        latestCities.remove(cityName);
-        latestCities.add(0, cityName);
-        if (latestCities.size() > 4) {
-            latestCities.remove(4);
-        }
+        LatestCities.getInstance().addCity(cityName);
         notifyDataSetChanged();
     }
 }
