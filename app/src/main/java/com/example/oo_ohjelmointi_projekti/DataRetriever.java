@@ -214,7 +214,6 @@ public class DataRetriever {
 
         try {
             URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/tyokay/statfin_tyokay_pxt_125s.px");
-
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -222,9 +221,7 @@ public class DataRetriever {
             con.setDoOutput(true);
 
             JsonNode jsonInputString = objectMapper.readTree(context.getResources().openRawResource(R.raw.employmentselfsufficiency));
-
-            ((ObjectNode) jsonInputString.get("query").get(0).get("selection")).putArray("values").add(code);
-
+            ((ObjectNode) jsonInputString.get("query").get(1).get("selection")).putArray("values").add(code);
             byte[] input = objectMapper.writeValueAsBytes(jsonInputString);
             OutputStream os = con.getOutputStream();
             os.write(input, 0, input.length);
@@ -236,13 +233,18 @@ public class DataRetriever {
                 response.append(line.trim());
             }
             JsonNode data = objectMapper.readTree(response.toString());
-
             JsonNode labels = data.get("dimension").get("Vuosi").get("category").get("label");
-            String year2 = labels.get(String.valueOf(labels.size() - 1)).asText();
+            String year2 = null;
+            for (JsonNode node : labels) {
+                year2 = node.asText();
+            }
+            System.out.println("Vuosi: " + year2);
+            //String year2 = labels.get(String.valueOf(labels.size() - 1)).asText();
 
             JsonNode sufficiencyValues = data.get("value");
             String sufficiency = sufficiencyValues.get(sufficiencyValues.size() - 1).asText();
             String yearPlusSufficiency = year2 + ": " + sufficiency;
+            System.out.println("sufficiencyvalues: " + sufficiencyValues);
 
             return yearPlusSufficiency ;
 
