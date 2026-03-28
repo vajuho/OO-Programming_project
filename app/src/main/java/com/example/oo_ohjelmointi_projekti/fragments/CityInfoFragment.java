@@ -78,8 +78,10 @@ public class CityInfoFragment extends Fragment {
                 carImageView.setImageResource(R.drawable.car_tier_2);
             } else if (tierTwo <= carAmount && carAmount < tierThree) {
                 carImageView.setImageResource(R.drawable.car_tier_3);
-            } else {
+            } else if (carAmount >= tierThree) {
                 carImageView.setImageResource(R.drawable.car_tier_4);
+            } else {
+                carImageView.setImageResource(R.drawable.car_unknown);
             }
         }
         return view;
