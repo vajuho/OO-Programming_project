@@ -55,7 +55,7 @@ public class CompareFragment extends Fragment {
         CityOnePopulationAmountText.setText(String.valueOf(cityOnePopulation));
         CityTwoPopulationAmountText.setText(String.valueOf(cityTwoPopulation));
         CityOneTemperatureText.setText("" + cityOneTemp);
-        CityTwoTemperatureText.setText("" + cityOneTemp);
+        CityTwoTemperatureText.setText("" + cityTwoTemp);
 
         return view;
     }
