@@ -223,7 +223,7 @@ public class DataRetriever {
 
             JsonNode jsonInputString = objectMapper.readTree(context.getResources().openRawResource(R.raw.employmentselfsufficiency));
 
-            ((ObjectNode) jsonInputString.get("query").get(0).get("selection")).putArray("values").add(code);
+            ((ObjectNode) jsonInputString.get("query").get(1).get("selection")).putArray("values").add(code);
 
             byte[] input = objectMapper.writeValueAsBytes(jsonInputString);
             OutputStream os = con.getOutputStream();
@@ -238,8 +238,10 @@ public class DataRetriever {
             JsonNode data = objectMapper.readTree(response.toString());
 
             JsonNode labels = data.get("dimension").get("Vuosi").get("category").get("label");
-            String year2 = labels.get(String.valueOf(labels.size() - 1)).asText();
-
+            String year2 = null;
+            for (JsonNode node : labels) {
+                year2 = node.asText();
+            }
             JsonNode sufficiencyValues = data.get("value");
             String sufficiency = sufficiencyValues.get(sufficiencyValues.size() - 1).asText();
             String yearPlusSufficiency = year2 + ": " + sufficiency;
