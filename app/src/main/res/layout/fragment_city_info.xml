@@ -1,14 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.CityInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/WeatherDescriptionText"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:text="Kuvaus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TemperatureText" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/TemperatureText"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:text="Lämpötila"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmploymentSelfSufficiencyText" />
+
+    <TextView
+        android:id="@+id/CarAmountText"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:text="Autojen määrä"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WeatherDescriptionText" />
+
+    <TextView
+        android:id="@+id/EmploymentSelfSufficiencyText"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:text="Omavaraisuus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmploymentRateText" />
+
+    <TextView
+        android:id="@+id/EmploymentRateText"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:text="Työllisyysaste"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PopulationChangeText" />
+
+    <TextView
+        android:id="@+id/PopulationChangeText"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:text="Väestönmuutos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PopulationAmountText" />
+
+    <TextView
+        android:id="@+id/cityWikiUrlText"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:text="Url"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CityDescriptionText" />
+
+    <TextView
+        android:id="@+id/PopulationAmountText"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:text="Väkiluku"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityWikiUrlText" />
+
+    <TextView
+        android:id="@+id/CityDescriptionText"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:text="Kuvaus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CityNameText" />
+
+    <TextView
+        android:id="@+id/CityNameText"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="44dp"
+        android:text="Nimi tulee tähän"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

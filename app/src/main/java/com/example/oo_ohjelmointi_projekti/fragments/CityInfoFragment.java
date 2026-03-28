@@ -23,7 +23,7 @@ public class CityInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_city_info, container, false);
-    }
+
         cityNameText.setText(populationDataStorage.getMunicipality());
         cityDescriptionText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(0));
         cityWikiUrlText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(1));
@@ -51,4 +51,5 @@ public class CityInfoFragment extends Fragment {
             carImageView.setImageResource(R.drawable.car_tier_4);
         }
     }
-}
+
+    }
