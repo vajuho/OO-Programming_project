@@ -170,7 +170,7 @@ public class DataRetriever {
             String year = labels.get(String.valueOf(labels.size() - 1)).asText();
 
             JsonNode rates = data.get("value");
-            String rate = values.get(rates.size() - 1);
+            String rate = rates.get(rates.size() - 1).asText();
             String yearPlusRate = year + ": " + rate;
 
             return yearPlusRate;
