@@ -52,10 +52,10 @@ public class CompareFragment extends Fragment {
 
         City0neNameText.setText(cityOne.getWeather().getName());
         CityTwoNameText.setText(cityTwo.getName());
-        CityOnePopulationAmountText.setText(String.valueOf(cityOnePopulation));
+        CityOnePopulationAmountText.setText("Väkiluku: " + cityOnePopulation);
         CityTwoPopulationAmountText.setText(String.valueOf(cityTwoPopulation));
-        CityOneTemperatureText.setText("" + cityOneTemp);
-        CityTwoTemperatureText.setText("" + cityTwoTemp);
+        CityOneTemperatureText.setText("Lämpötila: " + cityOneTemp);
+        CityTwoTemperatureText.setText(String.valueOf(cityTwoTemp));
 
         return view;
     }
