@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.oo_ohjelmointi_projekti.MunicipalityData;
 import com.example.oo_ohjelmointi_projekti.PopulationDataStorage;
 import com.example.oo_ohjelmointi_projekti.R;
+import com.example.oo_ohjelmointi_projekti.WeatherData;
 
 public class CityInfoFragment extends Fragment {
 
@@ -43,16 +44,16 @@ public class CityInfoFragment extends Fragment {
         PopulationDataStorage populationDataStorage = PopulationDataStorage.getInstance();
         MunicipalityData municipalityData = MunicipalityData.getInstance();
 
-        cityNameText.setText(populationDataStorage.getMunicipality());
+        cityNameText.setText("Väkiluku: " + populationDataStorage.getMunicipality());
         cityDescriptionText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(0));
         cityWikiUrlText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(1));
-        populationAmountText.setText(String.valueOf(municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount()));
-        populationChangeText.setText(String.valueOf(municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease()));
-        employmentRateText.setText(municipalityData.getEmploymentData().getEmploymentRate());
-        employmentSelfSufficiencyText.setText(municipalityData.getEmploymentData().getEmploymentSelfSufficiency());
-        temperatureText.setText(municipalityData.getWeather().getTemperature());
-        weatherDescriptionText.setText(municipalityData.getWeather().getDescription());
-        carAmountText.setText(municipalityData.getCarData().getCarAmount());
+        populationAmountText.setText(String.valueOf("Väkiluku: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount()));
+        populationChangeText.setText(String.valueOf("Väestönmuutos: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease()));
+        employmentRateText.setText("Työllisyysaste: " + municipalityData.getEmploymentData().getEmploymentRate() + "%");
+        employmentSelfSufficiencyText.setText("Työpaikkojen omavaraisuus: " + municipalityData.getEmploymentData().getEmploymentSelfSufficiency());
+        temperatureText.setText("Lämpötila nyt: " + municipalityData.getWeather() + "°C");
+        weatherDescriptionText.setText("Sää nyt: " + municipalityData.getWeather().getDescription());
+        carAmountText.setText("Autojen määrä: " + municipalityData.getCarData().getCarAmount());
 
         int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
 
