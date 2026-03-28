@@ -38,4 +38,13 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="2dp" />
 
+    <FrameLayout
+        android:id="@+id/InfoFragmentLayout"
+        android:layout_width="409dp"
+        android:layout_height="672dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="58dp">
+
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
