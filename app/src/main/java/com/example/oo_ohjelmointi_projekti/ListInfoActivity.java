@@ -30,8 +30,8 @@ public class ListInfoActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        if (getIntent().getBooleanExtra("ShowCompareInListInfoActivity", true)) {  // Trying to find boolean value. Function putExtra was used in CityForCompareActivity
+        boolean value = getIntent().getBooleanExtra("ShowCompareInListInfoActivity", false);
+        if (value) {  // Trying to find boolean value. Function putExtra was used in CityForCompareActivity
             fragmentSwapMethod(new CompareFragment());
         } else {
             fragmentSwapMethod(new CityInfoFragment());
