@@ -8,26 +8,26 @@
     tools:context=".fragments.CityInfoFragment">
 
     <TextView
-        android:id="@+id/WeatherDescriptionText"
-        android:layout_width="318dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="8dp"
-        android:text="Kuvaus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TemperatureText" />
-
-    <TextView
         android:id="@+id/TemperatureText"
         android:layout_width="318dp"
         android:layout_height="23dp"
         android:layout_marginTop="8dp"
         android:text="Lämpötila"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EmploymentSelfSufficiencyText" />
+
+    <TextView
+        android:id="@+id/WeatherDescriptionText"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:text="Kuvaus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TemperatureText" />
 
     <TextView
         android:id="@+id/CarAmountText"
@@ -36,7 +36,7 @@
         android:layout_marginTop="8dp"
         android:text="Autojen määrä"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WeatherDescriptionText" />
 
@@ -106,10 +106,12 @@
 
     <TextView
         android:id="@+id/CityOneNameText"
-        android:layout_width="318dp"
-        android:layout_height="23dp"
+        android:layout_width="324dp"
+        android:layout_height="31dp"
         android:layout_marginTop="44dp"
         android:text="Nimi tulee tähän"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
