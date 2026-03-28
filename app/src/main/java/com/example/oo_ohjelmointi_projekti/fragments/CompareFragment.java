@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.oo_ohjelmointi_projekti.ComparedCityData;
 import com.example.oo_ohjelmointi_projekti.MunicipalityData;
 import com.example.oo_ohjelmointi_projekti.PopulationData;
+import com.example.oo_ohjelmointi_projekti.PopulationDataStorage;
 import com.example.oo_ohjelmointi_projekti.R;
 
 import java.util.ArrayList;
@@ -38,7 +40,23 @@ public class CompareFragment extends Fragment {
         int cityOnePopulation = cityOnePopulationList.get(cityOnePopulationList.size() - 1).getAmount();
         int cityTwoPopulation = cityTwoPopulationList.get(cityTwoPopulationList.size() - 1).getAmount();
 
-        double city1Temp = Double.parseDouble(cityOne.getWeather().getTemperature()) - 273.15;
-        double city2Temp = Double.parseDouble(cityTwo.getWeatherData().getTemperature()) - 273.15;
+        double cityOneTemp = cityOne.getWeather().getTemperature();
+        double cityTwoTemp = cityTwo.getWeatherData().getTemperature();
+
+        TextView City0neNameText = view.findViewById(R.id.CityOneNameText);
+        TextView CityTwoNameText = view.findViewById(R.id.CityTwoNameText);
+        TextView CityOnePopulationAmountText = view.findViewById(R.id.CityOnePopulationAmountText);
+        TextView CityTwoPopulationAmountText = view.findViewById(R.id.CityTwoPopulationAmountText);
+        TextView CityOneTemperatureText = view.findViewById(R.id.CityOneTemperatureText);
+        TextView CityTwoTemperatureText = view.findViewById(R.id.CityTwoTemperatureText);
+
+        City0neNameText.setText(cityOne.getWeather().getName());
+        CityTwoNameText.setText(cityTwo.getName());
+        CityOnePopulationAmountText.setText(String.valueOf(cityOnePopulation));
+        CityTwoPopulationAmountText.setText(String.valueOf(cityTwoPopulation));
+        CityOneTemperatureText.setText("" + cityOneTemp);
+        CityTwoTemperatureText.setText("" + cityOneTemp);
+
+        return view;
     }
 }
