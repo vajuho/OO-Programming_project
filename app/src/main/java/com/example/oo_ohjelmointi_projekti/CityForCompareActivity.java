@@ -14,6 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -41,12 +42,12 @@ public class CityForCompareActivity extends AppCompatActivity {
         CityCompareSearchButton.setOnClickListener(View -> {
             String cityName = CityNameCompareEdit.getText().toString().trim();
             if (!cityName.isEmpty()) {
-                getCompareData();
+                getCompareData(cityName);
             }
         });
     }
 
-    public void getCompareData() {
+    public void getCompareData(String cityName) {
         Context context = this;
         DataRetriever dr = new DataRetriever();
         ExecutorService service = Executors.newSingleThreadExecutor();
@@ -59,16 +60,20 @@ public class CityForCompareActivity extends AppCompatActivity {
         service.execute(new Runnable() {
             @Override
             public void run() {
-
+                ArrayList<PopulationData> populationList = dr.getPopulation(context, cityName);
+                WeatherData weatherData = dr.getWeather(cityName);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (fadklfaös == null) {
+                        if (populationList == null) {
                             StatusTextTwo.setText("Haku epäonnistui, kaupunkia ei ole olemassa tai se on kirjoitettu väärin.");
                             return;
                         }
-
+                        ComparedCityData.getInstance().setName(cityName);
+                        ComparedCityData.getInstance().setWeatherData(weatherData);
+                        ComparedCityData.getInstance().setPopulationList(populationList);
                         StatusTextTwo.setText("Haku onnistui");
+                        GoToCompare.setEnabled(true);
                     }
                 });
             }

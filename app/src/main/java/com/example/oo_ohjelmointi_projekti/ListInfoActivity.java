@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+
+import com.example.oo_ohjelmointi_projekti.fragments.CityInfoFragment;
+import com.example.oo_ohjelmointi_projekti.fragments.CompareFragment;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,17 @@ public class ListInfoActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        fragmentSwapMethod(new CityInfoFragment());
+
+        if () {
+            fragmentSwapMethod(new CompareFragment());
+        }
+    }
+    private void fragmentSwapMethod(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.InfoFragmentLayout, fragment)
+                .commit();
     }
     public void goToCityForCompareActivity(View view) {
         Intent intent = new Intent(this, CityForCompareActivity.class);
