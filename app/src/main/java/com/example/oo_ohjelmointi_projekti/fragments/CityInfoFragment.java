@@ -50,7 +50,7 @@ public class CityInfoFragment extends Fragment {
         populationChangeText.setText(String.valueOf("Väestönmuutos: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease()));
         employmentRateText.setText("Työllisyysaste vuonna " + municipalityData.getEmploymentData().getEmploymentRate() + "%");
         employmentSelfSufficiencyText.setText("Työpaikkojen omavaraisuus: " + municipalityData.getEmploymentData().getEmploymentSelfSufficiency());
-        temperatureText.setText("Lämpötila nyt: " + municipalityData.getWeather() + "°C");
+        temperatureText.setText(String.format("Lämpötila nyt: %.1f °C", municipalityData.getWeather().getTemperature()));
         weatherDescriptionText.setText("Sää nyt: " + municipalityData.getWeather().getDescription());
         carAmountText.setText("Autojen määrä: " + municipalityData.getCarData().getCarAmount());
 
