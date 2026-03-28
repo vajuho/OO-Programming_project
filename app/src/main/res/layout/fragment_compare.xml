@@ -35,8 +35,10 @@
         android:layout_height="25dp"
         android:layout_marginTop="16dp"
         android:text="Kunta 2 lämpötila"
-        app:layout_constraintTop_toBottomOf="@+id/CityTwoPopulationAmountText"
-        tools:layout_editor_absoluteX="223dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CityTwoPopulationAmountText" />
 
     <TextView
         android:id="@+id/CityOnePopulationAmountText"
@@ -66,8 +68,10 @@
         android:layout_height="25dp"
         android:layout_marginTop="16dp"
         android:text="Kunta 1 lämpötila"
-        app:layout_constraintTop_toBottomOf="@+id/CityOnePopulationAmountText"
-        tools:layout_editor_absoluteX="30dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CityOnePopulationAmountText" />
 
     <TextView
         android:id="@+id/Heading"
