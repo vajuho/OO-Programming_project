@@ -31,10 +31,10 @@ public class ListInfoActivity extends AppCompatActivity {
             return insets;
         });
 
-        fragmentSwapMethod(new CityInfoFragment());
-
-        if () {
+        if (getIntent().getBooleanExtra("ShowCompareInListInfoActivity", true)) {  // Trying to find boolean value. Function putExtra was used in CityForCompareActivity
             fragmentSwapMethod(new CompareFragment());
+        } else {
+            fragmentSwapMethod(new CityInfoFragment());
         }
     }
     private void fragmentSwapMethod(Fragment fragment) {
