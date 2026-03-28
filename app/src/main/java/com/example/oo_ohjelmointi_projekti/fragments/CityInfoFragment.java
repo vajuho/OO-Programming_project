@@ -24,4 +24,31 @@ public class CityInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_city_info, container, false);
     }
+        cityNameText.setText(populationDataStorage.getMunicipality());
+        cityDescriptionText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(0));
+        cityWikiUrlText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(1));
+        populationAmountText.setText(String.valueOf(municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount()));
+        populationChangeText.setText(String.valueOf(municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease()));
+        employmentRateText.setText(municipalityData.getEmploymentData().getEmploymentRate());
+        employmentSelfSufficiencyText.setText(municipalityData.getEmploymentData().getEmploymentSelfSufficiency());
+        temperatureText.setText(municipalityData.getWeather().getTemperature());
+        weatherDescriptionText.setText(municipalityData.getWeather().getDescription());
+        carAmountText.setText(municipalityData.getCarData().getCarAmount());
+
+        int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
+
+        int tierOne = 2000;
+        int tierTwo = 10000;
+        int tierThree = 50000;
+
+        if (carAmount < tierOne) {
+            carImageView.setImageResource(R.drawable.car_tier_1);
+        } else if (tierOne <= carAmount && carAmount < tierTwo) {
+            carImageView.setImageResource(R.drawable.car_tier_2);
+        } else if (tierTwo <= carAmount && carAmount < tierThree) {
+            carImageView.setImageResource(R.drawable.car_tier_3);
+        } else {
+            carImageView.setImageResource(R.drawable.car_tier_4);
+        }
+    }
 }
