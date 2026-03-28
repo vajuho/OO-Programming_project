@@ -48,7 +48,6 @@ public class DataRetriever {
             municipalityCodes.put(keys.get(i), values.get(i));
         }
         String code = null;
-        code = null;
         code = municipalityCodes.get(area);
 
         try {
@@ -138,7 +137,6 @@ public class DataRetriever {
             municipalityCodes.put(keys.get(i), values.get(i));
         }
         String code = null;
-        code = null;
         code = municipalityCodes.get(area);
 
         try {
@@ -210,7 +208,6 @@ public class DataRetriever {
             municipalityCodes.put(keys.get(i), values.get(i));
         }
         String code = null;
-        code = null;
         code = municipalityCodes.get(area);
 
         try {
@@ -282,7 +279,6 @@ public class DataRetriever {
             municipalityCodes.put(keys.get(i), values.get(i));
         }
         String code = null;
-        code = null;
         code = municipalityCodes.get(area);
 
         try {
