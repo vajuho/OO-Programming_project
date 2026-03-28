@@ -165,8 +165,10 @@ public class DataRetriever {
             JsonNode data = objectMapper.readTree(response.toString());
 
             JsonNode labels = data.get("dimension").get("Vuosi").get("category").get("label");
-            String year = labels.get(String.valueOf(labels.size() - 1)).asText();
-
+            String year = null;
+            for (JsonNode node : labels) {
+                year = node.asText();
+            }
             JsonNode rates = data.get("value");
             String rate = rates.get(rates.size() - 1).asText();
             String yearPlusRate = year + ": " + rate;
