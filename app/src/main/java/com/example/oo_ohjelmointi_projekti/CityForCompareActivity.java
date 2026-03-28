@@ -37,6 +37,7 @@ public class CityForCompareActivity extends AppCompatActivity {
         CityNameCompareEdit = findViewById(R.id.CityNameCompareEdit);
         CityCompareSearchButton = findViewById(R.id.CityCompareSearchButton);
         StatusTextTwo = findViewById(R.id.StatusTextTwo);
+        GoToCompare = findViewById(R.id.GoToCompare);
         GoToCompare.setEnabled(false);
 
         CityCompareSearchButton.setOnClickListener(View -> {

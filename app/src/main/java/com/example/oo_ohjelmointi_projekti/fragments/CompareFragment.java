@@ -37,6 +37,10 @@ public class CompareFragment extends Fragment {
         ArrayList<PopulationData> cityOnePopulationList = cityOne.getPopulations();
         ArrayList<PopulationData> cityTwoPopulationList = cityTwo.getPopulationList();
 
+        if (cityOnePopulationList == null || cityTwoPopulationList == null) {
+            return view;
+        }
+
         int cityOnePopulation = cityOnePopulationList.get(cityOnePopulationList.size() - 1).getAmount();
         int cityTwoPopulation = cityTwoPopulationList.get(cityTwoPopulationList.size() - 1).getAmount();
 
