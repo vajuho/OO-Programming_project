@@ -15,7 +15,7 @@ public class LatestCities {
     public ArrayList<String> getCities() {
         return cities;
     }
-    public void addCity (String name) {
+    public void addCity(String name) {
         cities.remove(name);
         cities.add(0, name);
         if (cities.size() > 4) {
