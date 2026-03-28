@@ -83,6 +83,8 @@ public class CityInfoFragment extends Fragment {
             } else {
                 carImageView.setImageResource(R.drawable.car_unknown);
             }
+        } else {
+            carImageView.setImageResource(R.drawable.car_unknown);
         }
         return view;
     }
