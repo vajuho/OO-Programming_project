@@ -122,12 +122,12 @@
         android:id="@+id/populationChart"
         android:layout_width="318dp"
         android:layout_height="221dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CarImageView"
+        app:layout_constraintTop_toBottomOf="@+id/CarAmountText"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
