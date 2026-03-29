@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.charts.Cartesian;
+import com.anychart.core.cartesian.series.Line;
+import com.anychart.enums.MarkerType;
+import com.anychart.enums.TooltipPositionMode;
 import com.example.oo_ohjelmointi_projekti.MunicipalityData;
 import com.example.oo_ohjelmointi_projekti.PopulationData;
 import com.example.oo_ohjelmointi_projekti.PopulationDataStorage;
@@ -77,6 +80,14 @@ public class CityInfoFragment extends Fragment {
 
             cartesian.yAxis(0).title("Väkiluku");
             cartesian.xAxis(0).title("Vuosi");
+
+            cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
+
+            Line series = cartesian.line(data);
+            series.name("Väkiluku");
+            series.hovered().markers().enabled(true).type(MarkerType.CIRCLE).size(4d);
+
+            populationChart.setChart(cartesian);
         }
 
         if (municipalityData.getEmploymentData() != null) {
