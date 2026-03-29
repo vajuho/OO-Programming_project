@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.anychart.chart.common.dataentry.DataEntry;
+import com.anychart.charts.Cartesian;
 import com.example.oo_ohjelmointi_projekti.MunicipalityData;
 import com.example.oo_ohjelmointi_projekti.PopulationData;
 import com.example.oo_ohjelmointi_projekti.PopulationDataStorage;
@@ -49,8 +50,7 @@ public class CityInfoFragment extends Fragment {
         TextView weatherDescriptionText = view.findViewById(R.id.WeatherDescriptionText);
         TextView carAmountText = view.findViewById(R.id.CarAmountText);
         ImageView carImageView = view.findViewById(R.id.CarImageView);
-
-        // populationChart = view.findViewById(R.id.populationChart);
+        AnyChartView populationChart = view.findViewById(R.id.populationChart);
 
         PopulationDataStorage populationDataStorage = PopulationDataStorage.getInstance();
         MunicipalityData municipalityData = MunicipalityData.getInstance();
@@ -70,6 +70,13 @@ public class CityInfoFragment extends Fragment {
             for (PopulationData i : populations) {
                 data.add(new ValueDataEntry(String.valueOf(i.getYear()), Integer.valueOf(i.getAmount())));
             }
+
+            Cartesian cartesian = AnyChart.line();
+
+            cartesian.title("Väkiluku vuosittain");
+
+            cartesian.yAxis(0).title("Väkiluku");
+            cartesian.xAxis(0).title("Vuosi");
         }
 
         if (municipalityData.getEmploymentData() != null) {
