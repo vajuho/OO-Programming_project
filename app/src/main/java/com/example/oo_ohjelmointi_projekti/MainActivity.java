@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                         municipalityDataStorage.setCarData(new CarData(carAmount));
 
-                        municipalityDataStorage.setWikidata(new WikipediaData(wikiDataList));
+                        municipalityDataStorage.setWikiData(new WikipediaData(wikiDataList));
 
                         municipalityDataStorage.setWeather(weatherData);
 
