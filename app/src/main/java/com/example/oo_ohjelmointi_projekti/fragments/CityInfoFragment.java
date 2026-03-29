@@ -15,6 +15,15 @@ import com.example.oo_ohjelmointi_projekti.PopulationData;
 import com.example.oo_ohjelmointi_projekti.PopulationDataStorage;
 import com.example.oo_ohjelmointi_projekti.R;
 
+import com.anychart.AnyChart;
+import com.anychart.AnyChartView;
+import com.anychart.charts.Pie;
+import com.anychart.chart.common.dataentry.DataEntry;
+import com.anychart.chart.common.dataentry.ValueDataEntry;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import java.util.ArrayList;
 
 public class CityInfoFragment extends Fragment {
