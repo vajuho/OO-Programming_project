@@ -67,6 +67,9 @@ public class CityInfoFragment extends Fragment {
 
             ArrayList<PopulationData> populations = municipalityData.getPopulations();
             List<DataEntry> data = new ArrayList<>();
+            for (PopulationData i : populations) {
+                data.add(new ValueDataEntry(String.valueOf(i.getYear(), i.getAmount())));
+            }
         }
 
         if (municipalityData.getEmploymentData() != null) {
