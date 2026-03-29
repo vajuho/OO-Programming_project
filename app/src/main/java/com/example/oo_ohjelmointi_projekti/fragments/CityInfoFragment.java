@@ -10,12 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.anychart.chart.common.dataentry.DataEntry;
 import com.example.oo_ohjelmointi_projekti.MunicipalityData;
 import com.example.oo_ohjelmointi_projekti.PopulationData;
 import com.example.oo_ohjelmointi_projekti.PopulationDataStorage;
 import com.example.oo_ohjelmointi_projekti.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CityInfoFragment extends Fragment {
 
@@ -58,6 +60,8 @@ public class CityInfoFragment extends Fragment {
             populationAmountText.setText("Väkiluku: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount());
             populationChangeText.setText("Väestönmuutos: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease());
 
+            ArrayList<PopulationData> populations = municipalityData.getPopulations();
+            List<DataEntry> data = new ArrayList<>();
         }
 
         if (municipalityData.getEmploymentData() != null) {
