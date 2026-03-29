@@ -11,8 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.oo_ohjelmointi_projekti.MunicipalityData;
+import com.example.oo_ohjelmointi_projekti.PopulationData;
 import com.example.oo_ohjelmointi_projekti.PopulationDataStorage;
 import com.example.oo_ohjelmointi_projekti.R;
+
+import java.util.ArrayList;
 
 public class CityInfoFragment extends Fragment {
 
@@ -39,6 +42,8 @@ public class CityInfoFragment extends Fragment {
         TextView weatherDescriptionText = view.findViewById(R.id.WeatherDescriptionText);
         TextView carAmountText = view.findViewById(R.id.CarAmountText);
         ImageView carImageView = view.findViewById(R.id.CarImageView);
+
+        // populationChart = view.findViewById(R.id.populationChart);
 
         PopulationDataStorage populationDataStorage = PopulationDataStorage.getInstance();
         MunicipalityData municipalityData = MunicipalityData.getInstance();
@@ -88,4 +93,4 @@ public class CityInfoFragment extends Fragment {
         }
         return view;
     }
-}
+    }

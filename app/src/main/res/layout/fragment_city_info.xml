@@ -117,14 +117,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CarAmountText" />
 
-    <com.patrykandpatrick.vico.views.cartesian.CartesianChartView
-        android:id="@+id/populationChart"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_marginBottom="16dp"
-        app:chartStyle="line"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
