@@ -19,21 +19,21 @@
 
     <TextView
         android:id="@+id/WeatherDescriptionText"
-        android:layout_width="318dp"
+        android:layout_width="150dp"
         android:layout_height="23dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TemperatureText" />
 
     <TextView
         android:id="@+id/CarAmountText"
-        android:layout_width="318dp"
+        android:layout_width="150dp"
         android:layout_height="23dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WeatherDescriptionText" />
 
@@ -111,18 +111,22 @@
         android:id="@+id/CarImageView"
         android:layout_width="175dp"
         android:layout_height="134dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/car_tier_1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CarAmountText" />
+        app:layout_constraintTop_toBottomOf="@+id/TemperatureText" />
 
     <com.anychart.AnyChartView
         android:id="@+id/populationChart"
-        android:layout_width="416dp"
-        android:layout_height="236dp"
+        android:layout_width="318dp"
+        android:layout_height="221dp"
+        android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CarImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
