@@ -57,6 +57,7 @@ public class CityInfoFragment extends Fragment {
         if (municipalityData.getPopulations() != null) {
             populationAmountText.setText("Väkiluku: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount());
             populationChangeText.setText("Väestönmuutos: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease());
+
         }
 
         if (municipalityData.getEmploymentData() != null) {
