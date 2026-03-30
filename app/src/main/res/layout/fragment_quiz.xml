@@ -21,4 +21,12 @@
         android:layout_marginTop="330dp"
         android:backgroundTint="#19181B"
         android:text="Tarkista" />
+
+    <TextView
+        android:id="@+id/ScoreResultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="20dp"
+        android:text="Tähän tulee tulos" />
 </FrameLayout>

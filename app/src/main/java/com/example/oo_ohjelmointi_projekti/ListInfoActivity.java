@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.oo_ohjelmointi_projekti.fragments.CityInfoFragment;
 import com.example.oo_ohjelmointi_projekti.fragments.CompareFragment;
+import com.example.oo_ohjelmointi_projekti.fragments.QuizFragment;
 
 import java.util.ArrayList;
 
@@ -45,6 +46,9 @@ public class ListInfoActivity extends AppCompatActivity {
     public void goToCityForCompareActivity(View view) {
         Intent intent = new Intent(this, CityForCompareActivity.class);
         startActivity(intent);
+    }
+    public void goToQuiz(View view) {
+        fragmentSwapMethod(new QuizFragment());
     }
     public void goToHome(View view) {
         Intent intent = new Intent(this, MainActivity.class);

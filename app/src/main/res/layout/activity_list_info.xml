@@ -31,6 +31,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="4dp"
         android:backgroundTint="#19181B"
+        android:onClick="goToQuiz"
         android:text="Siirry visaan"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"

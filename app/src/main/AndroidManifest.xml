@@ -17,9 +17,6 @@
             android:name=".CityForCompareActivity"
             android:exported="false" />
         <activity
-            android:name=".CompareInfoActivity"
-            android:exported="false" />
-        <activity
             android:name=".ListInfoActivity"
             android:exported="false" />
         <activity

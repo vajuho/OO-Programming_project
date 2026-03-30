@@ -24,14 +24,15 @@ public class QuizViewHolder extends RecyclerView.ViewHolder {
 
     public void setQuestion(QuestionData question, int position, ArrayList<Integer> selectedAnswers) {
         questionText.setText(question.getQuestionText());
-        //optionsGroup.removeAllViews();
         ArrayList<String> options = question.getOptions();
 
-        for (int i = 0; i < options.size(); i++) {
-            RadioButton radioButton = new RadioButton(itemView.getContext());
-            radioButton.setText(options.get(i));
-            optionsGroup.addView(radioButton);
-        }
+        ((RadioButton)optionsGroup.getChildAt(0)).setText(options.get(0));
+        ((RadioButton)optionsGroup.getChildAt(1)).setText(options.get(1));
+        ((RadioButton)optionsGroup.getChildAt(2)).setText(options.get(2));
+        ((RadioButton)optionsGroup.getChildAt(3)).setText(options.get(3));
+
+        optionsGroup.setOnCheckedChangeListener(null);
+        optionsGroup.clearCheck();
 
         if (selectedAnswers.get(position) != null) {
             optionsGroup.check(selectedAnswers.get(position));
@@ -40,7 +41,7 @@ public class QuizViewHolder extends RecyclerView.ViewHolder {
         optionsGroup.setOnCheckedChangeListener((radioGroup, checkedId) -> {
             selectedAnswers.set(position, checkedId);
         });
-    }
+}
 
     public int getSelectedAnswerIndex() {
         int selectedId = optionsGroup.getCheckedRadioButtonId();

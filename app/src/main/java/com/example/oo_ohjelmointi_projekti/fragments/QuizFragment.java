@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.oo_ohjelmointi_projekti.ComparedCityData;
 import com.example.oo_ohjelmointi_projekti.MunicipalityData;
@@ -65,7 +67,7 @@ public class QuizFragment extends Fragment {
             int populationLatest = populationList.get(populationList.size() - 1).getAmount();
             int populationChange = populationList.get(populationList.size() - 1).getPopulationIncrease();
             int yearLatest = populationList.get(populationList.size() - 1).getYear();
-            int yearRandomIndex = (int)(Math.random() * populationList.size());
+            int yearRandomIndex = (int) (Math.random() * populationList.size());
             int yearRandom = populationList.get(yearRandomIndex).getYear();
             int populationDuringRandomYear = populationList.get(yearRandomIndex).getAmount();
             double temperature = municipalityData.getWeather().getTemperature();
@@ -77,33 +79,33 @@ public class QuizFragment extends Fragment {
             double low = 0.6;
             double high = 0.7;
             ArrayList<String> weatherDescriptionsList = new ArrayList<>(Arrays.asList(
-            "thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain",
-            "light thunderstorm", "thunderstorm", "heavy thunderstorm", "ragged thunderstorm",
-            "thunderstorm with light drizzle", "thunderstorm with drizzle", "thunderstorm with heavy drizzle",
-            "light intensity drizzle", "drizzle", "heavy intensity drizzle", "light intensity drizzle rain", "drizzle rain",
-            "heavy intensity drizzle rain", "shower rain and drizzle", "heavy shower rain and drizzle", "shower drizzle",
-            "light rain", "moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain", "freezing rain",
-            "light intensity shower rain", "shower rain", "heavy intensity shower rain", "ragged shower rain",
-            "light snow", "snow", "heavy snow", "sleet", "light shower sleet", "shower sleet",
-            "light rain and snow", "rain and snow", "light shower snow", "shower snow", "heavy shower snow",
-            "mist", "smoke", "haze", "sand/dust whirls", "fog", "sand", "dust", "volcanic ash", "squalls", "tornado",
-            "clear sky", "few clouds", "scattered clouds", "broken clouds", "overcast clouds"));
+                    "thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain",
+                    "light thunderstorm", "thunderstorm", "heavy thunderstorm", "ragged thunderstorm",
+                    "thunderstorm with light drizzle", "thunderstorm with drizzle", "thunderstorm with heavy drizzle",
+                    "light intensity drizzle", "drizzle", "heavy intensity drizzle", "light intensity drizzle rain", "drizzle rain",
+                    "heavy intensity drizzle rain", "shower rain and drizzle", "heavy shower rain and drizzle", "shower drizzle",
+                    "light rain", "moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain", "freezing rain",
+                    "light intensity shower rain", "shower rain", "heavy intensity shower rain", "ragged shower rain",
+                    "light snow", "snow", "heavy snow", "sleet", "light shower sleet", "shower sleet",
+                    "light rain and snow", "rain and snow", "light shower snow", "shower snow", "heavy shower snow",
+                    "mist", "smoke", "haze", "sand/dust whirls", "fog", "sand", "dust", "volcanic ash", "squalls", "tornado",
+                    "clear sky", "few clouds", "scattered clouds", "broken clouds", "overcast clouds"));
             int descriptionListLength = weatherDescriptionsList.size();
 
             // question 1
             addQuestionToList(questionsList, optionsList,
-                "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
-                populationLatest, low, high);
+                    "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
+                    populationLatest, low, high);
 
             // question 2
             addQuestionToList(questionsList, optionsList,
-                "Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
-                populationChange, low, high);
+                    "Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
+                    populationChange, low, high);
 
             // question 3
             addQuestionToList(questionsList, optionsList,
-                "Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
-                temperature, low, high);
+                    "Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
+                    temperature, low, high);
 
             // question 4
             addQuestionToList(questionsList, optionsList,
@@ -127,18 +129,15 @@ public class QuizFragment extends Fragment {
 
             // question 8
             optionsList.add(String.valueOf(weatherDescription));
-            optionsList.add(weatherDescriptionsList.get((int)(Math.random() * descriptionListLength)));
-            optionsList.add(weatherDescriptionsList.get((int)(Math.random() * descriptionListLength)));
-            optionsList.add(weatherDescriptionsList.get((int)(Math.random() * descriptionListLength)));
+            optionsList.add(weatherDescriptionsList.get((int) (Math.random() * descriptionListLength)));
+            optionsList.add(weatherDescriptionsList.get((int) (Math.random() * descriptionListLength)));
+            optionsList.add(weatherDescriptionsList.get((int) (Math.random() * descriptionListLength)));
             Collections.shuffle(optionsList);
             correctAnswerIndex = optionsList.indexOf(weatherDescription);
 
             questionsList.add(new QuestionData("Minkälainen on tämänhetkinen sää kunnassa " + populationDataStorage.getMunicipality() + "?",
                     optionsList, correctAnswerIndex));
             optionsList.clear();
-
-
-
 
 
             //Säilytin varmuuden vuoksi jos tarvitsee:
@@ -179,14 +178,24 @@ public class QuizFragment extends Fragment {
             optionsList.clear();*/
 
             RecyclerView recyclerView = view.findViewById(R.id.QuizRecyclerView);
-            QuizAdapter adapter = new QuizAdapter(getContext(), questionsList);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            QuizAdapter adapter = new QuizAdapter(getContext(), questionsList);
             recyclerView.setAdapter(adapter);
+
+            TextView scoreResult = view.findViewById(R.id.ScoreResultText);
+            Button checkButton = view.findViewById(R.id.CheckButton);
+            if (checkButton != null) {
+                checkButton.setOnClickListener(v -> {
+                    int score = adapter.getScore();
+                    scoreResult.setText("Pisteet: " + score + " / " + questionsList.size());
+                });
+
+
+            }
 
 
 
         }
-
 
         return view;
     }
