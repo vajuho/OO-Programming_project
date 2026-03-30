@@ -6,7 +6,18 @@
     android:background="#FFFFFF"
     tools:context=".fragments.QuizFragment">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="656dp" />
+
+    <Button
+        android:id="@+id/CheckButton"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="330dp"
+        android:backgroundTint="#19181B"
+        android:text="Tarkista" />
 </FrameLayout>
