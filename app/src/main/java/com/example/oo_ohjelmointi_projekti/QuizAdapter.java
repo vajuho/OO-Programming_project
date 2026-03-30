@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
     private Context context;
-
     private ArrayList<QuestionData> questionList;
     private ArrayList<Integer> selectedAnswers;
 
@@ -39,7 +38,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LatestCityViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull QuizViewHolder holder, int position) {
         holder.setQuestion(questionList.get(position), position, selectedAnswers);
     }
 
@@ -48,13 +47,14 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
         return questionList.size();
     }
 
-    public void getScore() {
+    public int getScore() {
         int score = 0;
         for(int i = 0; i < questionList.size(); i++) {
             if(selectedAnswers.get(i) == questionList.get(i).getCorrectAnswerIndex()) {
                 score++;
             }
         }
+        return score;
     }
 }
 

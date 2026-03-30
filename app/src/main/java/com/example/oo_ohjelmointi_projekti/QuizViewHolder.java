@@ -22,9 +22,9 @@ public class QuizViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void setQuestion(QuestionData question, int position) {
+    public void setQuestion(QuestionData question, int position, ArrayList<Integer> selectedAnswers) {
         questionText.setText(question.getQuestionText());
-        optionsGroup.removeAllViews();
+        //optionsGroup.removeAllViews();
         ArrayList<String> options = question.getOptions();
 
         for (int i = 0; i < options.size(); i++) {
@@ -32,6 +32,14 @@ public class QuizViewHolder extends RecyclerView.ViewHolder {
             radioButton.setText(options.get(i));
             optionsGroup.addView(radioButton);
         }
+
+        if (selectedAnswers.get(position) != null) {
+            optionsGroup.check(selectedAnswers.get(position));
+        }
+
+        optionsGroup.setOnCheckedChangeListener((radioGroup, checkedId) -> {
+            selectedAnswers.set(position, checkedId);
+        });
     }
 
     public int getSelectedAnswerIndex() {
