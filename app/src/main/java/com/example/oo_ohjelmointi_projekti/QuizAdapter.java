@@ -17,26 +17,24 @@ import java.util.ArrayList;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
     private Context context;
-    private OnQuizClickListener listener;
 
-    public interface OnQuizClickListener {
-        void onCityClick(String cityName);
-    }
+    private ArrayList<QuestionData> questionList;
 
-    public QuizAdapter(Context context, OnQuizClickListener listener) {
+    public QuizAdapter(Context context, ArrayList<QuestionData> questionList) {
         this.context = context;
-        this.listener = listener;
+        this.questionList = questionList;
     }
 
     @NonNull
     @Override
     public QuizViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new QuizViewHolder(LayoutInflater.from(context).inflate(R.layout.question_view, parent, false));
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull LatestCityViewHolder holder, int position) {
-        ArrayList<String> cities = LatestCities.getInstance().getCities();
+        QuestionData question = questionList.get(position);
         if (position >= cities.size()) {
             return;
         }
@@ -44,7 +42,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
 
     @Override
     public int getItemCount() {
-        return LatestCities.getInstance().getCities().size();
+        return questionList.size();
     }
 
     public void addCity(String cityName) {
