@@ -34,6 +34,19 @@ public class QuizFragment extends Fragment {
         }
     }
 
+    private void addQuestionToList(ArrayList<QuestionData> questionsList, ArrayList<String> optionsList,
+                                   String questionText, double correctValue, double low, double high) {
+        optionsList.add(String.valueOf(correctValue));
+        for (int i = 0; i < 3; i++) {
+            double fakeValue = correctValue * (low + (Math.random() * high));
+            optionsList.add(String.valueOf(fakeValue));
+        }
+        Collections.shuffle(optionsList);
+        int correctAnswerIndex = optionsList.indexOf(String.valueOf(correctValue));
+        questionsList.add(new QuestionData(questionText, new ArrayList<>(optionsList), correctAnswerIndex));
+        optionsList.clear();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,6 +79,7 @@ public class QuizFragment extends Fragment {
             "light rain and snow", "rain and snow", "light shower snow", "shower snow", "heavy shower snow",
             "mist", "smoke", "haze", "sand/dust whirls", "fog", "sand", "dust", "volcanic ash", "squalls", "tornado",
             "clear sky", "few clouds", "scattered clouds", "broken clouds", "overcast clouds"));
+            int descriptionListLength = weatherDescriptionsList.size();
 
             // question 1
             optionsList.add(String.valueOf(population));
@@ -103,11 +117,11 @@ public class QuizFragment extends Fragment {
                     optionsList, correctAnswerIndex));
             optionsList.clear();
 
-            // question 3
-            optionsList.add(String.valueOf(temperature));
-            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
-            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
-            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
+            // question 4
+            optionsList.add(String.valueOf(weatherDescription));
+            optionsList.add(String.valueOf(weatherDescriptionsList.get((int)(descriptionListLength + Math.random()))));
+            optionsList.add(String.valueOf(weatherDescriptionsList.get((int)(descriptionListLength + Math.random()))));
+            optionsList.add(String.valueOf(weatherDescriptionsList.get((int)(descriptionListLength + Math.random()))));
             Collections.shuffle(optionsList);
             correctAnswerIndex = optionsList.indexOf(String.valueOf(temperature));
 
