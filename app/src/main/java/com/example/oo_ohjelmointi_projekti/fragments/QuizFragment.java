@@ -46,19 +46,33 @@ public class QuizFragment extends Fragment {
         if (municipalityData.getPopulations() != null) {
             ArrayList<PopulationData> populationList = municipalityData.getPopulations();
             int population = populationList.get(populationList.size() - 1).getAmount();
+            int populationChange = populationList.get(populationList.size() - 1).getPopulationIncrease();
             int year = populationList.get(populationList.size() - 1).getYear();
+            double low = 0.6;
+            double high = 0.7;
 
+            // question 1
             optionsList.add(String.valueOf(population));
-            optionsList.add(String.valueOf(population * (0.6 + (Math.random() * (0.7)))));
-            optionsList.add(String.valueOf(population * (0.6 + (Math.random() * (0.7)))));
-            optionsList.add(String.valueOf(population * (0.6 + (Math.random() * (0.7)))));
+            optionsList.add(String.valueOf(population * (low + (Math.random() * (high)))));
+            optionsList.add(String.valueOf(population * (low + (Math.random() * (high)))));
+            optionsList.add(String.valueOf(population * (low + (Math.random() * (high)))));
             Collections.shuffle(optionsList);
             int correctAnswerIndex = optionsList.indexOf(population);
 
-            questionsList.add(new QuestionData("Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + year,
+            questionsList.add(new QuestionData("Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + year + "?",
                     optionsList, correctAnswerIndex));
+            optionsList.clear();
 
+            // question 2
+            optionsList.add(String.valueOf(populationChange));
+            optionsList.add(String.valueOf(populationChange * (low + (Math.random() * (high)))));
+            optionsList.add(String.valueOf(populationChange * (low + (Math.random() * (high)))));
+            optionsList.add(String.valueOf(populationChange * (low + (Math.random() * (high)))));
+            Collections.shuffle(optionsList);
+            int correctAnswerIndex = optionsList.indexOf(populationChange);
 
+            questionsList.add(new QuestionData("Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + year + "?",
+                    optionsList, correctAnswerIndex));
 
 
         }
