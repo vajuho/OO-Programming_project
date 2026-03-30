@@ -44,7 +44,7 @@ public class MunicipalityData {
         return wikiData;
     }
 
-    public void setWikidata(WikipediaData wikiData) {
+    public void setWikiData(WikipediaData wikiData) {
         this.wikiData = wikiData;
     }
 
