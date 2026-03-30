@@ -59,13 +59,17 @@ public class QuizFragment extends Fragment {
 
         if (municipalityData.getPopulations() != null) {
             ArrayList<PopulationData> populationList = municipalityData.getPopulations();
-            int population = populationList.get(populationList.size() - 1).getAmount();
+            int populationLatest = populationList.get(populationList.size() - 1).getAmount();
             int populationChange = populationList.get(populationList.size() - 1).getPopulationIncrease();
-            int year = populationList.get(populationList.size() - 1).getYear();
+            int yearLatest = populationList.get(populationList.size() - 1).getYear();
+            int yearRandomIndex = (int)(Math.random() * populationList.size());
+            int yearRandom = populationList.get(yearRandomIndex).getYear();
+            int populationDuringRandomYear = populationList.get(yearRandomIndex).getAmount();
             double temperature = municipalityData.getWeather().getTemperature();
             String weatherDescription = municipalityData.getWeather().getDescription();
             int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
             int employmentRate = Integer.parseInt(municipalityData.getEmploymentData().getEmploymentRate());
+            int employmentSelfSufficiency = Integer.parseInt(municipalityData.getEmploymentData().getEmploymentSelfSufficiency());
             int correctAnswerIndex = 0;
             double low = 0.6;
             double high = 0.7;
@@ -85,12 +89,12 @@ public class QuizFragment extends Fragment {
 
             // question 1
             addQuestionToList(questionsList, optionsList,
-                "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + year + "?",
-                population, low, high);
+                "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
+                populationLatest, low, high);
 
             // question 2
             addQuestionToList(questionsList, optionsList,
-                "Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + year + "?",
+                "Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
                 populationChange, low, high);
 
             // question 3
@@ -108,13 +112,17 @@ public class QuizFragment extends Fragment {
                     "Mikä oli työllisyysaste kunnassa " + populationDataStorage.getMunicipality() + "?",
                     employmentRate, low, high);
 
+            // question 6
+            addQuestionToList(questionsList, optionsList,
+                    "Mikä oli työpaikkojen omavaraisuus kunnassa " + populationDataStorage.getMunicipality() + "?",
+                    employmentSelfSufficiency, low, high);
 
+            // question 7
+            addQuestionToList(questionsList, optionsList,
+                    "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearRandom + "?",
+                    populationDuringRandomYear, low, high);
 
-
-
-
-
-            // question 9
+            // question 8
             optionsList.add(String.valueOf(weatherDescription));
             optionsList.add(String.valueOf(weatherDescriptionsList.get((int)(descriptionListLength + Math.random()))));
             optionsList.add(String.valueOf(weatherDescriptionsList.get((int)(descriptionListLength + Math.random()))));
