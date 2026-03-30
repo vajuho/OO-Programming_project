@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void searchData(String cityName) {
+        View view = new View(getApplicationContext());
         Context context = this;
         DataRetriever dr = new DataRetriever();
         ExecutorService service = Executors.newSingleThreadExecutor();
@@ -83,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                             StatusText.setText("Haku epäonnistui, kaupunkia ei ole olemassa tai se on kirjoitettu väärin.");
                             return;
                         }
-
                         PopulationDataStorage populationStorage = PopulationDataStorage.getInstance();
                         MunicipalityData municipalityDataStorage = MunicipalityData.getInstance();
 
@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                         cityAdapter.addCity(cityName);
                         GoToListInfoButton.setEnabled(true);
                         StatusText.setText("Haku onnistui");
+                        goToListInfo(view);
                     }
                 });
             }
