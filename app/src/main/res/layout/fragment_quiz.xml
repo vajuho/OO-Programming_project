@@ -10,7 +10,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/QuizRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="656dp" />
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/CheckButton"
@@ -27,6 +27,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginTop="20dp"
-        android:text="Tähän tulee tulos" />
+        android:layout_marginTop="20dp" />
 </FrameLayout>

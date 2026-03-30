@@ -73,8 +73,11 @@ public class QuizFragment extends Fragment {
             double temperature = municipalityData.getWeather().getTemperature();
             String weatherDescription = municipalityData.getWeather().getDescription();
             int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
-            int employmentRate = Integer.parseInt(municipalityData.getEmploymentData().getEmploymentRate());
-            int employmentSelfSufficiency = Integer.parseInt(municipalityData.getEmploymentData().getEmploymentSelfSufficiency());
+            String yearPlusEmployment = municipalityData.getEmploymentData().getEmploymentRate();
+            int employmentRate = (int) Double.parseDouble(yearPlusEmployment.split(":")[1]);
+            String yearPlusSufficiency = municipalityData.getEmploymentData().getEmploymentSelfSufficiency();
+            int employmentSelfSufficiency = (int) Double.parseDouble(yearPlusSufficiency.split(":")[1]);
+
             int correctAnswerIndex = 0;
             double low = 0.6;
             double high = 0.7;
@@ -187,7 +190,9 @@ public class QuizFragment extends Fragment {
             if (checkButton != null) {
                 checkButton.setOnClickListener(v -> {
                     int score = adapter.getScore();
-                    scoreResult.setText("Pisteet: " + score + " / " + questionsList.size());
+                    if (scoreResult != null) {
+                        scoreResult.setText("Pisteet: " + score + " / " + questionsList.size());
+                    }
                 });
 
 

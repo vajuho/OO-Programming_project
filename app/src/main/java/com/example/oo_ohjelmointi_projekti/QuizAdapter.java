@@ -50,7 +50,8 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
     public int getScore() {
         int score = 0;
         for(int i = 0; i < questionList.size(); i++) {
-            if(selectedAnswers.get(i) == questionList.get(i).getCorrectAnswerIndex()) {
+            Integer selected = selectedAnswers.get(i);
+            if (selected != null && selected == questionList.get(i).getCorrectAnswerIndex()) {
                 score++;
             }
         }

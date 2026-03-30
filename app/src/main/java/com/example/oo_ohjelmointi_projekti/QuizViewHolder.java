@@ -26,19 +26,21 @@ public class QuizViewHolder extends RecyclerView.ViewHolder {
         questionText.setText(question.getQuestionText());
         ArrayList<String> options = question.getOptions();
 
-        ((RadioButton)optionsGroup.getChildAt(0)).setText(options.get(0));
-        ((RadioButton)optionsGroup.getChildAt(1)).setText(options.get(1));
-        ((RadioButton)optionsGroup.getChildAt(2)).setText(options.get(2));
-        ((RadioButton)optionsGroup.getChildAt(3)).setText(options.get(3));
-
         optionsGroup.setOnCheckedChangeListener(null);
         optionsGroup.clearCheck();
+
+        for (int i = 0; i < optionsGroup.getChildCount(); i++) {
+            RadioButton radioButton = (RadioButton) optionsGroup.getChildAt(i);
+            radioButton.setText(options.get(i));
+            radioButton.setId(i);
+        }
 
         if (selectedAnswers.get(position) != null) {
             optionsGroup.check(selectedAnswers.get(position));
         }
 
         optionsGroup.setOnCheckedChangeListener((radioGroup, checkedId) -> {
+            // checkedId on nyt 0, 1, 2 tai 3
             selectedAnswers.set(position, checkedId);
         });
 }
