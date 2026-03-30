@@ -64,7 +64,8 @@ public class QuizFragment extends Fragment {
             int year = populationList.get(populationList.size() - 1).getYear();
             double temperature = municipalityData.getWeather().getTemperature();
             String weatherDescription = municipalityData.getWeather().getDescription();
-
+            int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
+            int employmentRate = Integer.parseInt(municipalityData.getEmploymentData().getEmploymentRate());
             int correctAnswerIndex = 0;
             double low = 0.6;
             double high = 0.7;
@@ -100,7 +101,12 @@ public class QuizFragment extends Fragment {
             // question 4
             addQuestionToList(questionsList, optionsList,
                     "Kuinka monta henkilöautoa on liikennekäytössä kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    temperature, low, high);
+                    carAmount, low, high);
+
+            // question 5
+            addQuestionToList(questionsList, optionsList,
+                    "Mikä oli työllisyysaste kunnassa " + populationDataStorage.getMunicipality() + "?",
+                    employmentRate, low, high);
 
 
 
