@@ -143,43 +143,6 @@ public class QuizFragment extends Fragment {
             optionsList.clear();
 
 
-            //Säilytin varmuuden vuoksi jos tarvitsee:
-            // question 1
-            /*optionsList.add(String.valueOf(population));
-            optionsList.add(String.valueOf(population * (low + (Math.random() * (high)))));
-            optionsList.add(String.valueOf(population * (low + (Math.random() * (high)))));
-            optionsList.add(String.valueOf(population * (low + (Math.random() * (high)))));
-            Collections.shuffle(optionsList);
-            correctAnswerIndex = optionsList.indexOf(String.valueOf((population)));
-
-            questionsList.add(new QuestionData("Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + year + "?",
-                    optionsList, correctAnswerIndex));
-            optionsList.clear();
-
-            // question 2
-            optionsList.add(String.valueOf(populationChange));
-            optionsList.add(String.valueOf(populationChange * (low + (Math.random() * (high)))));
-            optionsList.add(String.valueOf(populationChange * (low + (Math.random() * (high)))));
-            optionsList.add(String.valueOf(populationChange * (low + (Math.random() * (high)))));
-            Collections.shuffle(optionsList);
-            correctAnswerIndex = optionsList.indexOf(String.valueOf(populationChange));
-
-            questionsList.add(new QuestionData("Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + year + "?",
-                    optionsList, correctAnswerIndex));
-            optionsList.clear();
-
-            // question 3
-            optionsList.add(String.valueOf(temperature));
-            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
-            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
-            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
-            Collections.shuffle(optionsList);
-            correctAnswerIndex = optionsList.indexOf(String.valueOf(temperature));
-
-            questionsList.add(new QuestionData("Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    optionsList, correctAnswerIndex));
-            optionsList.clear();*/
-
             RecyclerView recyclerView = view.findViewById(R.id.QuizRecyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             QuizAdapter adapter = new QuizAdapter(getContext(), questionsList);
@@ -194,14 +157,8 @@ public class QuizFragment extends Fragment {
                         scoreResult.setText("Pisteet: " + score + " / " + questionsList.size());
                     }
                 });
-
-
             }
-
-
-
         }
-
         return view;
     }
 }
