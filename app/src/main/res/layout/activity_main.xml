@@ -42,15 +42,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/SearchedCitiesRV"
-        android:layout_width="351dp"
-        android:layout_height="260dp"
+        android:layout_width="348dp"
+        android:layout_height="246dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextView" />
 
@@ -59,10 +59,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="500dp"
         android:layout_marginEnd="323dp"
         android:text="Viimeksi haetut kunnat:"
-        android:textSize="20sp"
+        android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/SearchedCitiesRV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
