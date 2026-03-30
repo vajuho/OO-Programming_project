@@ -19,10 +19,16 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
     private Context context;
 
     private ArrayList<QuestionData> questionList;
+    private ArrayList<Integer> selectedAnswers;
 
     public QuizAdapter(Context context, ArrayList<QuestionData> questionList) {
         this.context = context;
         this.questionList = questionList;
+
+        selectedAnswers = new ArrayList<>();
+        for (int i = 0; i < questionList.size(); i++) {
+            selectedAnswers.add(null);
+        }
     }
 
     @NonNull
@@ -34,7 +40,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull LatestCityViewHolder holder, int position) {
-        QuestionData question = questionList.get(position);
+        holder.setQuestion(questionList.get(position), position, selectedAnswers);
     }
 
     @Override
@@ -44,7 +50,11 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
 
     public void getScore() {
         int score = 0;
-        for()
+        for(int i = 0; i < questionList.size(); i++) {
+            if(selectedAnswers.get(i) == questionList.get(i).getCorrectAnswerIndex()) {
+                score++;
+            }
+        }
     }
 }
 
