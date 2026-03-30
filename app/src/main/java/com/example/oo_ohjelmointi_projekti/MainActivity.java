@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     TextView StatusText;
     EditText CityNameEdit;
     LatestCityAdapter cityAdapter;
-    Button GoToListInfoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
         CityNameEdit = findViewById(R.id.CityNameEdit);
         StatusText = findViewById(R.id.StatusText);
-        GoToListInfoButton = findViewById(R.id.GoToListInfoButton);
-        GoToListInfoButton.setEnabled(false);
 
         cityAdapter = new LatestCityAdapter(getApplicationContext(), cityName -> {
             CityNameEdit.setText(cityName);
@@ -102,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                         municipalityDataStorage.setWeather(weatherData);
 
                         cityAdapter.addCity(cityName);
-                        GoToListInfoButton.setEnabled(true);
                         StatusText.setText("Haku onnistui");
                         goToListInfo(view);
                     }

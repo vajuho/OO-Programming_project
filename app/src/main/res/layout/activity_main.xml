@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="102dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="99dp"
         android:layout_marginBottom="673dp"
         android:ems="10"
@@ -25,20 +25,20 @@
 
     <Button
         android:id="@+id/CityInfoSearchButton"
-        android:layout_width="122dp"
-        android:layout_height="45dp"
+        android:layout_width="131dp"
+        android:layout_height="72dp"
         android:layout_marginStart="160dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="168dp"
-        android:layout_marginBottom="615dp"
+        android:layout_marginBottom="500dp"
         android:onClick="searchDataMainActivity"
         android:text="Hae tiedot"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.387"
+        app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CityNameEdit"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.439" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/SearchedCitiesRV"
@@ -75,29 +75,13 @@
         android:layout_width="266dp"
         android:layout_height="80dp"
         android:layout_marginStart="178dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="175dp"
         android:layout_marginBottom="99dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CityInfoSearchButton"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/GoToListInfoButton"
-        android:layout_width="123dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="145dp"
-        android:layout_marginEnd="143dp"
-        android:layout_marginBottom="124dp"
-        android:onClick="goToListInfo"
-        android:text="Tarkastele tietoja"
-        app:layout_constraintBottom_toTopOf="@+id/TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CityInfoSearchButton"
         app:layout_constraintVertical_bias="0.0" />
