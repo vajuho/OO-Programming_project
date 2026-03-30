@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class LatestCityAdapter extends RecyclerView.Adapter<LatestCityViewHolder> {
-    private ArrayList<String> latestCities= new ArrayList<>();
     private Context context;
     private OnCityClickListener listener;
 
