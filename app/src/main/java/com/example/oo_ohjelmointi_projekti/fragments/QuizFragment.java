@@ -3,6 +3,8 @@ package com.example.oo_ohjelmointi_projekti.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.example.oo_ohjelmointi_projekti.MunicipalityData;
 import com.example.oo_ohjelmointi_projekti.PopulationData;
 import com.example.oo_ohjelmointi_projekti.PopulationDataStorage;
 import com.example.oo_ohjelmointi_projekti.QuestionData;
+import com.example.oo_ohjelmointi_projekti.QuizAdapter;
 import com.example.oo_ohjelmointi_projekti.R;
 
 import java.util.ArrayList;
@@ -124,13 +127,13 @@ public class QuizFragment extends Fragment {
 
             // question 8
             optionsList.add(String.valueOf(weatherDescription));
-            optionsList.add(String.valueOf(weatherDescriptionsList.get((int)(descriptionListLength + Math.random()))));
-            optionsList.add(String.valueOf(weatherDescriptionsList.get((int)(descriptionListLength + Math.random()))));
-            optionsList.add(String.valueOf(weatherDescriptionsList.get((int)(descriptionListLength + Math.random()))));
+            optionsList.add(weatherDescriptionsList.get((int)(Math.random() * descriptionListLength)));
+            optionsList.add(weatherDescriptionsList.get((int)(Math.random() * descriptionListLength)));
+            optionsList.add(weatherDescriptionsList.get((int)(Math.random() * descriptionListLength)));
             Collections.shuffle(optionsList);
-            correctAnswerIndex = optionsList.indexOf(String.valueOf(temperature));
+            correctAnswerIndex = optionsList.indexOf(weatherDescription);
 
-            questionsList.add(new QuestionData("Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
+            questionsList.add(new QuestionData("Minkälainen on tämänhetkinen sää kunnassa " + populationDataStorage.getMunicipality() + "?",
                     optionsList, correctAnswerIndex));
             optionsList.clear();
 
@@ -174,6 +177,12 @@ public class QuizFragment extends Fragment {
             questionsList.add(new QuestionData("Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
                     optionsList, correctAnswerIndex));
             optionsList.clear();*/
+
+            RecyclerView recyclerView = view.findViewById(R.id.QuizRecyclerView);
+            QuizAdapter adapter = new QuizAdapter(getContext(), questionsList);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.setAdapter(adapter);
+
 
 
         }
