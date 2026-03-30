@@ -9,8 +9,8 @@
 
     <EditText
         android:id="@+id/CityNameEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="215dp"
+        android:layout_height="49dp"
         android:layout_marginStart="102dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="99dp"
