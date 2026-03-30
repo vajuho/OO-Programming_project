@@ -16,6 +16,7 @@ import com.example.oo_ohjelmointi_projekti.QuestionData;
 import com.example.oo_ohjelmointi_projekti.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 
@@ -48,8 +49,23 @@ public class QuizFragment extends Fragment {
             int population = populationList.get(populationList.size() - 1).getAmount();
             int populationChange = populationList.get(populationList.size() - 1).getPopulationIncrease();
             int year = populationList.get(populationList.size() - 1).getYear();
+            double temperature = municipalityData.getWeather().getTemperature();
+            String weatherDescription = municipalityData.getWeather().getDescription();
+            int correctAnswerIndex = 0;
             double low = 0.6;
             double high = 0.7;
+            ArrayList<String> weatherDescriptionsList = new ArrayList<>(Arrays.asList(
+            "thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain",
+            "light thunderstorm", "thunderstorm", "heavy thunderstorm", "ragged thunderstorm",
+            "thunderstorm with light drizzle", "thunderstorm with drizzle", "thunderstorm with heavy drizzle",
+            "light intensity drizzle", "drizzle", "heavy intensity drizzle", "light intensity drizzle rain", "drizzle rain",
+            "heavy intensity drizzle rain", "shower rain and drizzle", "heavy shower rain and drizzle", "shower drizzle",
+            "light rain", "moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain", "freezing rain",
+            "light intensity shower rain", "shower rain", "heavy intensity shower rain", "ragged shower rain",
+            "light snow", "snow", "heavy snow", "sleet", "light shower sleet", "shower sleet",
+            "light rain and snow", "rain and snow", "light shower snow", "shower snow", "heavy shower snow",
+            "mist", "smoke", "haze", "sand/dust whirls", "fog", "sand", "dust", "volcanic ash", "squalls", "tornado",
+            "clear sky", "few clouds", "scattered clouds", "broken clouds", "overcast clouds"));
 
             // question 1
             optionsList.add(String.valueOf(population));
@@ -57,7 +73,7 @@ public class QuizFragment extends Fragment {
             optionsList.add(String.valueOf(population * (low + (Math.random() * (high)))));
             optionsList.add(String.valueOf(population * (low + (Math.random() * (high)))));
             Collections.shuffle(optionsList);
-            int correctAnswerIndex = optionsList.indexOf(population);
+            correctAnswerIndex = optionsList.indexOf(String.valueOf((population)));
 
             questionsList.add(new QuestionData("Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + year + "?",
                     optionsList, correctAnswerIndex));
@@ -69,12 +85,35 @@ public class QuizFragment extends Fragment {
             optionsList.add(String.valueOf(populationChange * (low + (Math.random() * (high)))));
             optionsList.add(String.valueOf(populationChange * (low + (Math.random() * (high)))));
             Collections.shuffle(optionsList);
-            int correctAnswerIndex = optionsList.indexOf(populationChange);
+            correctAnswerIndex = optionsList.indexOf(String.valueOf(populationChange));
 
-            questionsList.add(new QuestionData("Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + year + "?",
+            questionsList.add(new QuestionData("Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + year + "?",
                     optionsList, correctAnswerIndex));
+            optionsList.clear();
 
+            // question 3
+            optionsList.add(String.valueOf(temperature));
+            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
+            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
+            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
+            Collections.shuffle(optionsList);
+            correctAnswerIndex = optionsList.indexOf(String.valueOf(temperature));
 
+            questionsList.add(new QuestionData("Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
+                    optionsList, correctAnswerIndex));
+            optionsList.clear();
+
+            // question 3
+            optionsList.add(String.valueOf(temperature));
+            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
+            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
+            optionsList.add(String.valueOf(temperature * (low + (Math.random() * (high)))));
+            Collections.shuffle(optionsList);
+            correctAnswerIndex = optionsList.indexOf(String.valueOf(temperature));
+
+            questionsList.add(new QuestionData("Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
+                    optionsList, correctAnswerIndex));
+            optionsList.clear();
         }
 
 
