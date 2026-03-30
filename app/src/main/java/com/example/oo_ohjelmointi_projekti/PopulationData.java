@@ -2,18 +2,18 @@ package com.example.oo_ohjelmointi_projekti;
 
 public class PopulationData {
     private int year;
-    private int amount;
+    private int populationAmount;
     private int populationIncrease;
-    public PopulationData(int year, int amount, int populationIncrease) {
+    public PopulationData(int year, int populationAmount, int populationIncrease) {
         this.year = year;
-        this.amount = amount;
+        this.populationAmount = populationAmount;
         this.populationIncrease = populationIncrease;
     }
     public int getYear() {
         return year;
     }
     public int getAmount() {
-        return amount;
+        return populationAmount;
     }
     public int getPopulationIncrease() {
         return populationIncrease;

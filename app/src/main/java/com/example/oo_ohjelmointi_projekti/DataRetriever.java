@@ -375,8 +375,6 @@ public class DataRetriever {
             weatherData = objectMapper.readTree(new URL(String.format(WEATHER_BASE_URL, lat, longi, API_KEY)));
 
             WeatherData wData = new WeatherData(
-                    weatherData.get("name").asText(),
-                    weatherData.get("weather").get(0).get("main").asText(),
                     weatherData.get("weather").get(0).get("description").asText(),
                     weatherData.get("main").get("temp").asText()
             );
