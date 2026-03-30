@@ -35,9 +35,6 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull LatestCityViewHolder holder, int position) {
         QuestionData question = questionList.get(position);
-        if (position >= cities.size()) {
-            return;
-        }
     }
 
     @Override
@@ -45,9 +42,9 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
         return questionList.size();
     }
 
-    public void addCity(String cityName) {
-        LatestCities.getInstance().addCity(cityName);
-        notifyDataSetChanged();
+    public void getScore() {
+        int score = 0;
+        for()
     }
 }
 

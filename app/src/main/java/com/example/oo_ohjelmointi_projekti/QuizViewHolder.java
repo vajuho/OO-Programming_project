@@ -9,5 +9,9 @@ public class QuizViewHolder extends RecyclerView.ViewHolder {
 
     public QuizViewHolder(@NonNull View itemView) {
         super(itemView);
+        questionText = itemView.findViewById(R.id.)
     }
+
+
+
 }
