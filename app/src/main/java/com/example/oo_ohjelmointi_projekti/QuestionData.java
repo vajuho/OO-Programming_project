@@ -13,4 +13,15 @@ public class QuestionData {
         this.correctAnswerIndex = correctAnswerIndex;
     }
 
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public ArrayList<String> getOptions() {
+        return options;
+    }
+
+    public int getCorrectAnswerIndex() {
+        return correctAnswerIndex;
+    }
 }
