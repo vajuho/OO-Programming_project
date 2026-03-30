@@ -45,7 +45,7 @@ public class QuizFragment extends Fragment {
             int population = populationList.get(populationList.size() - 1).getAmount();
             int year = populationList.get(populationList.size() - 1).getYear();
 
-            questionsList.add(new QuestionData())
+            //questionsList.add(new QuestionData());
 
         }
 

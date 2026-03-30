@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.charts.Cartesian;
-import com.anychart.core.cartesian.series.Line;
+import com.anychart.core.cartesian.series.Area;
 import com.anychart.enums.MarkerType;
 import com.anychart.enums.TooltipPositionMode;
 import com.example.oo_ohjelmointi_projekti.MunicipalityData;
@@ -22,7 +22,6 @@ import com.example.oo_ohjelmointi_projekti.R;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
-import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
 
 import java.util.ArrayList;
@@ -74,7 +73,9 @@ public class CityInfoFragment extends Fragment {
                 data.add(new ValueDataEntry(String.valueOf(i.getYear()), Integer.valueOf(i.getAmount())));
             }
 
-            Cartesian cartesian = AnyChart.line();
+            Cartesian cartesian = AnyChart.area();
+
+            cartesian.animation(true);  // Cool animation from AnyChart.
 
             cartesian.title("Väkiluku vuosittain");
 
@@ -83,9 +84,11 @@ public class CityInfoFragment extends Fragment {
 
             cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
 
-            Line series = cartesian.line(data);
+            Area series = cartesian.area(data);
             series.name("Väkiluku");
-            series.hovered().markers().enabled(true).type(MarkerType.CIRCLE).size(4d);
+            series.hovered().markers().enabled(true).type(MarkerType.CIRCLE).size(5d);
+
+            cartesian.background().stroke("#444444");
 
             populationChart.setChart(cartesian);
         }

@@ -5,14 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".fragments.CityInfoFragment">
 
     <TextView
         android:id="@+id/CityTwoNameText"
         android:layout_width="137dp"
         android:layout_height="0dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="90dp"
         android:text="Kunta 2 nimi"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.89"
@@ -45,7 +47,7 @@
         android:id="@+id/CityOnePopulationAmountText"
         android:layout_width="162dp"
         android:layout_height="23dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="Kunta 1 väkiluku"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.12"
@@ -54,10 +56,11 @@
 
     <TextView
         android:id="@+id/CityOneNameText"
-        android:layout_width="144dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="72dp"
+        android:layout_width="137dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="90dp"
         android:text="Kunta 1 nimi"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.337"
@@ -81,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Kuntien vertailu"
-        android:textSize="20sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -5,6 +5,7 @@
     android:id="@+id/SearchButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <EditText
@@ -25,6 +26,8 @@
 
     <Button
         android:id="@+id/CityInfoSearchButton"
+        style="@style/Widget.MaterialComponents.Button"
+        android:backgroundTint="#19181B"
         android:layout_width="131dp"
         android:layout_height="72dp"
         android:layout_marginStart="160dp"
@@ -33,6 +36,7 @@
         android:layout_marginBottom="500dp"
         android:onClick="searchDataMainActivity"
         android:text="Hae tiedot"
+        android:textColorLink="#E2DDDD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.416"
@@ -42,15 +46,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/SearchedCitiesRV"
-        android:layout_width="348dp"
-        android:layout_height="246dp"
-        android:layout_marginStart="30dp"
+        android:layout_width="284dp"
+        android:layout_height="229dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="70dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextView" />
 
@@ -60,13 +63,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="500dp"
-        android:layout_marginEnd="323dp"
+        android:layout_marginEnd="40dp"
         android:text="Viimeksi haetut kunnat:"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/SearchedCitiesRV"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />

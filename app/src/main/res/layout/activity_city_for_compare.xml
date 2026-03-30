@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".CityForCompareActivity">
 
     <TextView
@@ -42,13 +43,17 @@
 
     <Button
         android:id="@+id/CityCompareSearchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="104dp"
+        android:layout_height="57dp"
         android:layout_marginStart="148dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="149dp"
         android:layout_marginBottom="7dp"
+        android:backgroundTint="#19181B"
         android:text="Hae tiedot"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColorLink="#2196F3"
         app:layout_constraintBottom_toTopOf="@+id/GoToCompare"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,8 +61,9 @@
 
     <Button
         android:id="@+id/GoToCompare"
-        android:layout_width="114dp"
-        android:layout_height="54dp"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="104dp"
+        android:layout_height="57dp"
         android:layout_marginStart="148dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="149dp"
@@ -66,6 +72,7 @@
         android:text="Vertaile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CityCompareSearchButton" />
 
