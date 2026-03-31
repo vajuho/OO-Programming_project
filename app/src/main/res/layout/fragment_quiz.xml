@@ -10,8 +10,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/QuizRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="641dp"
-        android:layout_gravity="top" />
+        android:layout_height="583dp"
+        android:layout_gravity="center" />
 
     <Button
         android:id="@+id/CheckButton"
