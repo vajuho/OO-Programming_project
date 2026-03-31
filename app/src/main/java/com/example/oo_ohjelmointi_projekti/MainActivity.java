@@ -94,11 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
                         municipalityDataStorage.setCarData(new CarData(carAmount));
                         if (wikiDataList.get(0).equals("Wikimedia-täsmennyssivu")) {
-                            wikiDataList.get(0) = "";
-                            municipalityDataStorage.setWikiData(new WikipediaData(wikiDataList));
-                        } else {
-                            municipalityDataStorage.setWikiData(new WikipediaData(wikiDataList));
+                            wikiDataList.set(0, "");
                         }
+                        municipalityDataStorage.setWikiData(new WikipediaData(wikiDataList));
 
                         municipalityDataStorage.setWeather(weatherData);
 
