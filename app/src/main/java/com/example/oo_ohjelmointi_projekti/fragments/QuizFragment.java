@@ -89,6 +89,10 @@ public class QuizFragment extends Fragment {
             int yearLatest = populationList.get(populationList.size() - 1).getYear();
             int yearRandomIndex = (int) (Math.random() * populationList.size());
             int yearRandom = populationList.get(yearRandomIndex).getYear();
+            while (yearRandom == yearLatest) {
+                yearRandomIndex = (int) (Math.random() * populationList.size());
+                yearRandom = populationList.get(yearRandomIndex).getYear();
+            }
             int populationDuringRandomYear = populationList.get(yearRandomIndex).getAmount();
             int populationChangeDuringRandomYear = populationList.get(yearRandomIndex).getPopulationIncrease();
             double temperature = municipalityData.getWeather().getTemperature();
