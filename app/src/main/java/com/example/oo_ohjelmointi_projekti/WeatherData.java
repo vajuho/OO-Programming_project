@@ -13,7 +13,7 @@ public class WeatherData {
 
     public double getTemperature() {
         double temperatureKelvin = Double.parseDouble(temperature);
-        double temperatureCelsius = temperatureKelvin - 273.15;
+        double temperatureCelsius = Math.round((temperatureKelvin - 273.15) * 10.0) / 10.0;
         return temperatureCelsius;
     }
 }
