@@ -26,31 +26,24 @@ public class DataRetriever {
         JsonNode areas = null;
         try {
             areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            ArrayList<String> keys = new ArrayList<>();
+            ArrayList<String> values = new ArrayList<>();
 
-        ArrayList<String> keys = new ArrayList<>();
-        ArrayList<String> values = new ArrayList<>();
+            for (JsonNode node : areas.get("variables").get(1).get("values")) {
+                values.add(node.asText());
+            }
+            for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
+                keys.add(node.asText());
+            }
 
-        for (JsonNode node : areas.get("variables").get(1).get("values")) {
-            values.add(node.asText());
-        }
-        for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
-            keys.add(node.asText());
-        }
+            HashMap<String, String> municipalityCodes = new HashMap<>();
 
-        HashMap<String, String> municipalityCodes = new HashMap<>();
+            for (int i = 0; i < keys.size(); i++) {
+                municipalityCodes.put(keys.get(i), values.get(i));
+            }
+            String code = null;
+            code = municipalityCodes.get(area);
 
-        for (int i = 0; i < keys.size(); i++) {
-            municipalityCodes.put(keys.get(i), values.get(i));
-        }
-        String code = null;
-        code = municipalityCodes.get(area);
-
-        try {
             URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/synt/statfin_synt_pxt_12dy.px");
 
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -106,6 +99,8 @@ public class DataRetriever {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -115,31 +110,24 @@ public class DataRetriever {
         JsonNode areas = null;
         try {
             areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            ArrayList<String> keys = new ArrayList<>();
+            ArrayList<String> values = new ArrayList<>();
 
-        ArrayList<String> keys = new ArrayList<>();
-        ArrayList<String> values = new ArrayList<>();
+            for (JsonNode node : areas.get("variables").get(1).get("values")) {
+                values.add(node.asText());
+            }
+            for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
+                keys.add(node.asText());
+            }
 
-        for (JsonNode node : areas.get("variables").get(1).get("values")) {
-            values.add(node.asText());
-        }
-        for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
-            keys.add(node.asText());
-        }
+            HashMap<String, String> municipalityCodes = new HashMap<>();
 
-        HashMap<String, String> municipalityCodes = new HashMap<>();
+            for (int i = 0; i < keys.size(); i++) {
+                municipalityCodes.put(keys.get(i), values.get(i));
+            }
+            String code = null;
+            code = municipalityCodes.get(area);
 
-        for (int i = 0; i < keys.size(); i++) {
-            municipalityCodes.put(keys.get(i), values.get(i));
-        }
-        String code = null;
-        code = municipalityCodes.get(area);
-
-        try {
             URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/tyokay/statfin_tyokay_pxt_115x.px");
 
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -179,6 +167,8 @@ public class DataRetriever {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -188,31 +178,24 @@ public class DataRetriever {
         JsonNode areas = null;
         try {
             areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            ArrayList<String> keys = new ArrayList<>();
+            ArrayList<String> values = new ArrayList<>();
 
-        ArrayList<String> keys = new ArrayList<>();
-        ArrayList<String> values = new ArrayList<>();
+            for (JsonNode node : areas.get("variables").get(1).get("values")) {
+                values.add(node.asText());
+            }
+            for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
+                keys.add(node.asText());
+            }
 
-        for (JsonNode node : areas.get("variables").get(1).get("values")) {
-            values.add(node.asText());
-        }
-        for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
-            keys.add(node.asText());
-        }
+            HashMap<String, String> municipalityCodes = new HashMap<>();
 
-        HashMap<String, String> municipalityCodes = new HashMap<>();
+            for (int i = 0; i < keys.size(); i++) {
+                municipalityCodes.put(keys.get(i), values.get(i));
+            }
+            String code = null;
+            code = municipalityCodes.get(area);
 
-        for (int i = 0; i < keys.size(); i++) {
-            municipalityCodes.put(keys.get(i), values.get(i));
-        }
-        String code = null;
-        code = municipalityCodes.get(area);
-
-        try {
             URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/tyokay/statfin_tyokay_pxt_125s.px");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
@@ -249,6 +232,8 @@ public class DataRetriever {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -258,31 +243,24 @@ public class DataRetriever {
         JsonNode areas = null;
         try {
             areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            ArrayList<String> keys = new ArrayList<>();
+            ArrayList<String> values = new ArrayList<>();
 
-        ArrayList<String> keys = new ArrayList<>();
-        ArrayList<String> values = new ArrayList<>();
+            for (JsonNode node : areas.get("variables").get(1).get("values")) {
+                values.add(node.asText());
+            }
+            for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
+                keys.add(node.asText());
+            }
 
-        for (JsonNode node : areas.get("variables").get(1).get("values")) {
-            values.add(node.asText());
-        }
-        for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
-            keys.add(node.asText());
-        }
+            HashMap<String, String> municipalityCodes = new HashMap<>();
 
-        HashMap<String, String> municipalityCodes = new HashMap<>();
+            for (int i = 0; i < keys.size(); i++) {
+                municipalityCodes.put(keys.get(i), values.get(i));
+            }
+            String code = null;
+            code = municipalityCodes.get(area);
 
-        for (int i = 0; i < keys.size(); i++) {
-            municipalityCodes.put(keys.get(i), values.get(i));
-        }
-        String code = null;
-        code = municipalityCodes.get(area);
-
-        try {
             URL url = new URL("https://trafi2.stat.fi/PXWeb/api/v1/fi/TraFi/Liikennekaytossa_olevat_ajoneuvot/010_kanta_tau_101.px");
 
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -315,6 +293,8 @@ public class DataRetriever {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         return null;
