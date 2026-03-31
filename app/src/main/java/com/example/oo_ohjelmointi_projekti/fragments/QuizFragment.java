@@ -27,8 +27,6 @@ import java.util.Collections;
 
 public class QuizFragment extends Fragment {
 
-    private int currentScore = 0;
-
     public QuizFragment() {
     }
 
@@ -41,16 +39,34 @@ public class QuizFragment extends Fragment {
 
     private void addQuestionToList(ArrayList<QuestionData> questionsList, ArrayList<String> optionsList,
                                    String questionText, Number correctAnswer, double low, double high) {
-        optionsList.add(String.valueOf(correctAnswer));
+        String correctString = String.valueOf(correctAnswer);
+        optionsList.add(correctString);
+
+        double correctDouble = correctAnswer.doubleValue();
+
         for (int i = 0; i < 3; i++) {
-            int fakeValue = (int) (correctAnswer * (low + (Math.random() * high)));
-            optionsList.add(String.valueOf(fakeValue));
+            double fakeDouble = correctDouble * (low + (Math.random() * (high - low)));
+            String fakeString;
+
+            if (correctAnswer instanceof Integer) {
+                fakeString = String.valueOf((int) fakeDouble);
+            } else {
+                fakeString = String.format("%.1f", fakeDouble);
+            }
+
+            if (fakeString.equals(correctString)) {
+                fakeString = String.valueOf(correctAnswer instanceof Integer ?
+                          (int)fakeDouble + 1 : fakeDouble + 0.5);
+            }
+            optionsList.add(fakeString);
         }
         Collections.shuffle(optionsList);
-        int correctAnswerIndex = optionsList.indexOf(String.valueOf(correctAnswer));
-        questionsList.add(new QuestionData(questionText, new ArrayList<>(optionsList), correctAnswerIndex));
+
+        int findCorrectAnswerIndex = optionsList.indexOf(correctString);
+
+        questionsList.add(new QuestionData(questionText, new ArrayList<>(optionsList), findCorrectAnswerIndex));
         optionsList.clear();
-    }
+        }
 
 
     @Override
@@ -126,22 +142,10 @@ public class QuizFragment extends Fragment {
                     "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearRandom + "?",
                     populationDuringRandomYear, low, high);
 
-            /* question 7
+            //question 7
             addQuestionToList(questionsList, optionsList,
                     "Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    temperature, low, high);*/
-
-            optionsList.clear();
-            optionsList.add(String.valueOf(temperature));
-            optionsList.add(String.valueOf(temperature * (0.6 + (Math.random() * 0.7))));
-            optionsList.add(String.valueOf(temperature * (0.6 + (Math.random() * 0.7))));
-            optionsList.add(String.valueOf(temperature * (0.6 + (Math.random() * 0.7))));
-            Collections.shuffle(optionsList);
-            correctAnswerIndex = optionsList.indexOf(weatherDescription);
-
-            questionsList.add(new QuestionData("Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    new ArrayList<>(optionsList), correctAnswerIndex));
-            optionsList.clear();
+                    temperature, low, high);
 
             // question 8
             optionsList.clear();
