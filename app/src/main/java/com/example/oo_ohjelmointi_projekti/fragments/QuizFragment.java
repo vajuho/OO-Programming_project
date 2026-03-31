@@ -50,6 +50,7 @@ public class QuizFragment extends Fragment {
         int correctAnswerIndex = optionsList.indexOf(String.valueOf(correctAnswer));
         questionsList.add(new QuestionData(questionText, new ArrayList<>(optionsList), correctAnswerIndex));
         optionsList.clear();
+        System.out.println(questionsList);
     }
 
     @Override
@@ -137,6 +138,7 @@ public class QuizFragment extends Fragment {
             optionsList.add(weatherDescriptionsList.get((int) (Math.random() * descriptionListLength)));
             Collections.shuffle(optionsList);
             correctAnswerIndex = optionsList.indexOf(weatherDescription);
+            System.out.println(optionsList + " " + correctAnswerIndex);
 
             questionsList.add(new QuestionData("Minkälainen on tämänhetkinen sää kunnassa " + populationDataStorage.getMunicipality() + "?",
                     optionsList, correctAnswerIndex));
