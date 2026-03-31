@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -16,12 +17,15 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
     TextView StatusText;
+    ImageView StatusImage;
     EditText CityNameEdit;
     LatestCityAdapter cityAdapter;
 
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         CityNameEdit = findViewById(R.id.CityNameEdit);
         StatusText = findViewById(R.id.StatusText);
+        StatusImage = findViewById(R.id.StatusImage);
 
         cityAdapter = new LatestCityAdapter(getApplicationContext(), cityName -> {
             CityNameEdit.setText(cityName);
@@ -63,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 StatusText.setText("Haetaan......");
+                Glide.with(MainActivity.this).asGif().load(R.drawable.loading).into(StatusImage);
             }
         });
         service.execute(new Runnable() {
