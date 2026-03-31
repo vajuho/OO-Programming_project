@@ -96,7 +96,7 @@ public class QuizFragment extends Fragment {
             int employmentRate = (int) Double.parseDouble(yearPlusEmployment.split(":")[1]);
             String yearPlusSufficiency = municipalityData.getEmploymentData().getEmploymentSelfSufficiency();
             int employmentSelfSufficiency = (int) Double.parseDouble(yearPlusSufficiency.split(":")[1]);
-            double carsPerPopulation = ((double) carAmount / populationLatest) * 100;
+            double carsPerPopulation = Math.round(((((double) carAmount / populationLatest) * 100) * 10.0) / 10.0);
             int correctAnswerIndex = 0;
 
             ArrayList<String> weatherDescriptionsList = new ArrayList<>(Arrays.asList(
