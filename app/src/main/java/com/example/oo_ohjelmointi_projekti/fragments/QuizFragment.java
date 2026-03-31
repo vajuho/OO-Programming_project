@@ -40,10 +40,10 @@ public class QuizFragment extends Fragment {
     }
 
     private void addQuestionToList(ArrayList<QuestionData> questionsList, ArrayList<String> optionsList,
-                                   String questionText, double correctAnswer, double low, double high) {
+                                   String questionText, Number correctAnswer, double low, double high) {
         optionsList.add(String.valueOf(correctAnswer));
         for (int i = 0; i < 3; i++) {
-            double fakeValue = correctAnswer * (low + (Math.random() * high));
+            int fakeValue = (int) (correctAnswer * (low + (Math.random() * high)));
             optionsList.add(String.valueOf(fakeValue));
         }
         Collections.shuffle(optionsList);
@@ -51,6 +51,7 @@ public class QuizFragment extends Fragment {
         questionsList.add(new QuestionData(questionText, new ArrayList<>(optionsList), correctAnswerIndex));
         optionsList.clear();
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -107,28 +108,40 @@ public class QuizFragment extends Fragment {
 
             // question 3
             addQuestionToList(questionsList, optionsList,
-                    "Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    temperature, low, high);
-
-            // question 4
-            addQuestionToList(questionsList, optionsList,
                     "Kuinka monta henkilöautoa on liikennekäytössä kunnassa " + populationDataStorage.getMunicipality() + "?",
                     carAmount, low, high);
 
-            // question 5
+            // question 4
             addQuestionToList(questionsList, optionsList,
                     "Mikä oli työllisyysaste kunnassa " + populationDataStorage.getMunicipality() + "?",
                     employmentRate, low, high);
 
-            // question 6
+            // question 5
             addQuestionToList(questionsList, optionsList,
                     "Mikä oli työpaikkojen omavaraisuus kunnassa " + populationDataStorage.getMunicipality() + "?",
                     employmentSelfSufficiency, low, high);
 
-            // question 7
+            // question 6
             addQuestionToList(questionsList, optionsList,
                     "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearRandom + "?",
                     populationDuringRandomYear, low, high);
+
+            /* question 7
+            addQuestionToList(questionsList, optionsList,
+                    "Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
+                    temperature, low, high);*/
+
+            optionsList.clear();
+            optionsList.add(String.valueOf(temperature));
+            optionsList.add(String.valueOf(temperature * (0.6 + (Math.random() * 0.7))));
+            optionsList.add(String.valueOf(temperature * (0.6 + (Math.random() * 0.7))));
+            optionsList.add(String.valueOf(temperature * (0.6 + (Math.random() * 0.7))));
+            Collections.shuffle(optionsList);
+            correctAnswerIndex = optionsList.indexOf(weatherDescription);
+
+            questionsList.add(new QuestionData("Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
+                    new ArrayList<>(optionsList), correctAnswerIndex));
+            optionsList.clear();
 
             // question 8
             optionsList.clear();
