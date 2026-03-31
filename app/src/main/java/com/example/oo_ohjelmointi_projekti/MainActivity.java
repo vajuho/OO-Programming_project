@@ -93,8 +93,12 @@ public class MainActivity extends AppCompatActivity {
                         municipalityDataStorage.setEmploymentData(new EmploymentData(employmentRate, employmentSelfSufficiency));
 
                         municipalityDataStorage.setCarData(new CarData(carAmount));
-
-                        municipalityDataStorage.setWikiData(new WikipediaData(wikiDataList));
+                        if (wikiDataList.get(0).equals("Wikimedia-täsmennyssivu")) {
+                            wikiDataList.get(0) = "";
+                            municipalityDataStorage.setWikiData(new WikipediaData(wikiDataList));
+                        } else {
+                            municipalityDataStorage.setWikiData(new WikipediaData(wikiDataList));
+                        }
 
                         municipalityDataStorage.setWeather(weatherData);
 
