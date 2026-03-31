@@ -40,8 +40,8 @@ public class QuizFragment extends Fragment {
     private void addQuestionToList(ArrayList<QuestionData> questionsList, ArrayList<String> optionsList,
                                    String questionText, Number correctAnswer) {
         String correctString = String.valueOf(correctAnswer);
-        double low = 0.4;
-        double high = 0.9;
+        double low = 0.3;
+        double high = 1.2;
         optionsList.add(correctString);
 
         double correctDouble = correctAnswer.doubleValue();
