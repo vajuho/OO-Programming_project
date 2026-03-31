@@ -45,7 +45,7 @@ public class QuizFragment extends Fragment {
         double correctDouble = correctAnswer.doubleValue();
 
         for (int i = 0; i < 3; i++) {
-            double fakeDouble = correctDouble * (low + (Math.random() * (high)));
+            double fakeDouble = correctDouble * (low + (Math.random() * high));
             String fakeString;
 
             if (correctAnswer instanceof Integer) {
