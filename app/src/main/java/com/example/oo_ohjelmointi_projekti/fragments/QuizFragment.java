@@ -96,8 +96,8 @@ public class QuizFragment extends Fragment {
             int employmentSelfSufficiency = (int) Double.parseDouble(yearPlusSufficiency.split(":")[1]);
 
             int correctAnswerIndex = 0;
-            double low = 0.6;
-            double high = 0.7;
+            double low = 0.4;
+            double high = 0.9;
             ArrayList<String> weatherDescriptionsList = new ArrayList<>(Arrays.asList(
                     "thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain",
                     "light thunderstorm", "thunderstorm", "heavy thunderstorm", "ragged thunderstorm",
