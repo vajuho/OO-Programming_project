@@ -50,7 +50,6 @@ public class QuizFragment extends Fragment {
         int correctAnswerIndex = optionsList.indexOf(String.valueOf(correctAnswer));
         questionsList.add(new QuestionData(questionText, new ArrayList<>(optionsList), correctAnswerIndex));
         optionsList.clear();
-        System.out.println(questionsList);
     }
 
     @Override
@@ -132,18 +131,17 @@ public class QuizFragment extends Fragment {
                     populationDuringRandomYear, low, high);
 
             // question 8
+            optionsList.clear();
             optionsList.add(String.valueOf(weatherDescription));
             optionsList.add(weatherDescriptionsList.get((int) (Math.random() * descriptionListLength)));
             optionsList.add(weatherDescriptionsList.get((int) (Math.random() * descriptionListLength)));
             optionsList.add(weatherDescriptionsList.get((int) (Math.random() * descriptionListLength)));
             Collections.shuffle(optionsList);
             correctAnswerIndex = optionsList.indexOf(weatherDescription);
-            System.out.println(optionsList + " " + correctAnswerIndex);
 
             questionsList.add(new QuestionData("Minkälainen on tämänhetkinen sää kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    optionsList, correctAnswerIndex));
+                    new ArrayList<>(optionsList), correctAnswerIndex));
             optionsList.clear();
-
 
             RecyclerView recyclerView = view.findViewById(R.id.QuizRecyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
