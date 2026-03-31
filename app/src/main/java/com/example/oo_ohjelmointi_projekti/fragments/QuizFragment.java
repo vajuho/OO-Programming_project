@@ -27,6 +27,10 @@ import java.util.Collections;
 
 public class QuizFragment extends Fragment {
 
+    private ArrayList<QuestionData> questionsList = new ArrayList<>();
+    private ArrayList<String> optionsList = new ArrayList<>();
+
+
     public QuizFragment() {
     }
 
@@ -37,8 +41,7 @@ public class QuizFragment extends Fragment {
         }
     }
 
-    private void addQuestionToList(ArrayList<QuestionData> questionsList, ArrayList<String> optionsList,
-                                   String questionText, Number correctAnswer) {
+    private void addQuestionToList(String questionText, Number correctAnswer) {
         String correctString = String.valueOf(correctAnswer);
         double low = 0.3;
         double high = 1.2;
@@ -67,7 +70,6 @@ public class QuizFragment extends Fragment {
         int findCorrectAnswerIndex = optionsList.indexOf(correctString);
 
         questionsList.add(new QuestionData(questionText, new ArrayList<>(optionsList), findCorrectAnswerIndex));
-        Collections.shuffle(questionsList);
         optionsList.clear();
         }
 
@@ -77,8 +79,6 @@ public class QuizFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_quiz, container, false);
 
-        ArrayList<QuestionData> questionsList = new ArrayList<>();
-        ArrayList<String> optionsList = new ArrayList<>();
         MunicipalityData municipalityData = MunicipalityData.getInstance();
         PopulationDataStorage populationDataStorage = PopulationDataStorage.getInstance();
 
@@ -102,7 +102,8 @@ public class QuizFragment extends Fragment {
             int employmentRate = (int) Double.parseDouble(yearPlusEmployment.split(":")[1]);
             String yearPlusSufficiency = municipalityData.getEmploymentData().getEmploymentSelfSufficiency();
             int employmentSelfSufficiency = (int) Double.parseDouble(yearPlusSufficiency.split(":")[1]);
-            double carsPerPopulation = Math.round(((((double) carAmount / populationLatest) * 100) * 10.0) / 10.0);
+            double carsPerPopulationValue = ((double) carAmount / populationLatest) * 100;
+            double carsPerPopulation = Math.round(carsPerPopulationValue * 10.0) / 10.0;
             int correctAnswerIndex = 0;
 
             ArrayList<String> weatherDescriptionsList = new ArrayList<>(Arrays.asList(
@@ -120,42 +121,42 @@ public class QuizFragment extends Fragment {
             int descriptionListLength = weatherDescriptionsList.size();
 
             // question 1
-            addQuestionToList(questionsList, optionsList,
+            addQuestionToList(
                     "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
                     populationLatest);
 
             // question 2
-            addQuestionToList(questionsList, optionsList,
+            addQuestionToList(
                     "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearRandom + "?",
                     populationDuringRandomYear);
 
             // question 3
-            addQuestionToList(questionsList, optionsList,
+            addQuestionToList(
                     "Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
                     populationChangeLatest);
 
             // question 4
-            addQuestionToList(questionsList, optionsList,
+            addQuestionToList(
                     "Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearRandom + "?",
                     populationChangeDuringRandomYear);
 
             // question 5
-            addQuestionToList(questionsList, optionsList,
+            addQuestionToList(
                     "Kuinka monta henkilöautoa on liikennekäytössä kunnassa " + populationDataStorage.getMunicipality() + "?",
                     carAmount);
 
             // question 6
-            addQuestionToList(questionsList, optionsList,
+            addQuestionToList(
                     "Mikä oli työllisyysaste kunnassa " + populationDataStorage.getMunicipality() + "?",
                     employmentRate);
 
             // question 7
-            addQuestionToList(questionsList, optionsList,
+            addQuestionToList(
                     "Mikä oli työpaikkojen omavaraisuus kunnassa " + populationDataStorage.getMunicipality() + "?",
                     employmentSelfSufficiency);
 
             //question 8
-            addQuestionToList(questionsList, optionsList,
+            addQuestionToList(
                     "Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
                     temperature);
 
@@ -178,11 +179,11 @@ public class QuizFragment extends Fragment {
             optionsList.clear();
 
             // question 10
-            addQuestionToList(questionsList, optionsList,
+            addQuestionToList(
                     "Kuinka monta autoa sataa asukasta kohden on kunnassa " + populationDataStorage.getMunicipality() + "?",
                     carsPerPopulation);
 
-
+            Collections.shuffle(questionsList);
             RecyclerView recyclerView = view.findViewById(R.id.QuizRecyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             QuizAdapter adapter = new QuizAdapter(getContext(), questionsList);
