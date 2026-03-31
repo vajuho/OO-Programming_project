@@ -47,7 +47,7 @@
         android:id="@+id/CityOnePopulationAmountText"
         android:layout_width="162dp"
         android:layout_height="23dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="Kunta 1 väkiluku"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.12"
@@ -57,13 +57,13 @@
     <TextView
         android:id="@+id/CityOneNameText"
         android:layout_width="137dp"
-        android:layout_height="29dp"
+        android:layout_height="0dp"
         android:layout_marginTop="90dp"
         android:text="Kunta 1 nimi"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.337"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
