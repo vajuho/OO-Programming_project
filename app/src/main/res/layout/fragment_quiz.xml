@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="315dp"
         android:backgroundTint="#19181B"
         android:text="Tarkista" />
 
@@ -40,4 +40,13 @@
         android:layout_marginTop="20dp"
         android:text="Selaa kysymyksiä"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/ResultCommentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="48dp"
+        android:layout_marginTop="20dp"/>
 </FrameLayout>

@@ -16,25 +16,27 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="99dp"
         android:layout_marginBottom="673dp"
+        android:digits="abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ- "
         android:ems="10"
         android:hint="Syötä kunta"
         android:inputType="textCapSentences"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:digits="abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ- " />
+        app:layout_constraintVertical_bias="0.536" />
 
     <Button
         android:id="@+id/CityInfoSearchButton"
         style="@style/Widget.MaterialComponents.Button"
-        android:backgroundTint="#19181B"
         android:layout_width="131dp"
         android:layout_height="72dp"
         android:layout_marginStart="160dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="168dp"
         android:layout_marginBottom="500dp"
+        android:backgroundTint="#19181B"
         android:onClick="searchDataMainActivity"
         android:text="Hae tiedot"
         android:textColorLink="#E2DDDD"
@@ -43,7 +45,7 @@
         app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CityNameEdit"
-        app:layout_constraintVertical_bias="0.439" />
+        app:layout_constraintVertical_bias="0.471" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/SearchedCitiesRV"
@@ -55,6 +57,7 @@
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextView" />
 

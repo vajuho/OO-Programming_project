@@ -191,11 +191,21 @@ public class QuizFragment extends Fragment {
 
             TextView scoreResult = view.findViewById(R.id.ScoreResultText);
             Button checkButton = view.findViewById(R.id.CheckButton);
+            TextView ResultCommentText = view.findViewById(R.id.ResultCommentText);
+
             if (checkButton != null) {
                 checkButton.setOnClickListener(v -> {
                     int score = adapter.getScore();
                     if (scoreResult != null) {
                         scoreResult.setText("Pisteet: " + score + " / " + questionsList.size());
+                    }
+
+                    if (score <= 4) {
+                        ResultCommentText.setText("Olisi se voinut paremminkin mennä...");
+                    } else if (score <= 8){
+                        ResultCommentText.setText("Tiedät jo kohtuullisesti kunnnista.");
+                    } else if (score <= 10){
+                        ResultCommentText.setText("Olet kuntien numero guru!");
                     }
                 });
             }
