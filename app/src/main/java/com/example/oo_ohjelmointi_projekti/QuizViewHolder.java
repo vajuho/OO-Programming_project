@@ -40,7 +40,6 @@ public class QuizViewHolder extends RecyclerView.ViewHolder {
         }
 
         optionsGroup.setOnCheckedChangeListener((radioGroup, checkedId) -> {
-            // checkedId on nyt 0, 1, 2 tai 3
             selectedAnswers.set(position, checkedId);
         });
 }
