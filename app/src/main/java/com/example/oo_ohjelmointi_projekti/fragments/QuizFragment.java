@@ -146,9 +146,14 @@ public class QuizFragment extends Fragment {
             // question 8
             optionsList.clear();
             optionsList.add(String.valueOf(weatherDescription));
-            optionsList.add(weatherDescriptionsList.get((int) (Math.random() * descriptionListLength)));
-            optionsList.add(weatherDescriptionsList.get((int) (Math.random() * descriptionListLength)));
-            optionsList.add(weatherDescriptionsList.get((int) (Math.random() * descriptionListLength)));
+            int counter = 0;
+            while (counter < 3) {
+                String option = weatherDescriptionsList.get((int) (Math.random() * descriptionListLength));
+                if (!option.equals(weatherDescription)) {
+                    optionsList.add(option);
+                    counter++;
+                }
+            }
             Collections.shuffle(optionsList);
             correctAnswerIndex = optionsList.indexOf(weatherDescription);
 
