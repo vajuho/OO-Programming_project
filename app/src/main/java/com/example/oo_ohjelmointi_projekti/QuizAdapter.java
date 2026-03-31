@@ -39,6 +39,10 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull QuizViewHolder holder, int position) {
+        QuestionData question = questionList.get(position);
+        if (question.getOptions() == null || question.getOptions().isEmpty()) {
+            return;
+        }
         holder.setQuestion(questionList.get(position), position, selectedAnswers);
     }
 
