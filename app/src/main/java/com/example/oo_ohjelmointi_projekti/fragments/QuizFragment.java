@@ -67,6 +67,7 @@ public class QuizFragment extends Fragment {
         int findCorrectAnswerIndex = optionsList.indexOf(correctString);
 
         questionsList.add(new QuestionData(questionText, new ArrayList<>(optionsList), findCorrectAnswerIndex));
+        Collections.shuffle(questionsList);
         optionsList.clear();
         }
 
@@ -84,11 +85,12 @@ public class QuizFragment extends Fragment {
         if (municipalityData.getPopulations() != null) {
             ArrayList<PopulationData> populationList = municipalityData.getPopulations();
             int populationLatest = populationList.get(populationList.size() - 1).getAmount();
-            int populationChange = populationList.get(populationList.size() - 1).getPopulationIncrease();
+            int populationChangeLatest = populationList.get(populationList.size() - 1).getPopulationIncrease();
             int yearLatest = populationList.get(populationList.size() - 1).getYear();
             int yearRandomIndex = (int) (Math.random() * populationList.size());
             int yearRandom = populationList.get(yearRandomIndex).getYear();
             int populationDuringRandomYear = populationList.get(yearRandomIndex).getAmount();
+            int populationChangeDuringRandomYear = populationList.get(yearRandomIndex).getPopulationIncrease();
             double temperature = municipalityData.getWeather().getTemperature();
             String weatherDescription = municipalityData.getWeather().getDescription();
             int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
@@ -120,35 +122,40 @@ public class QuizFragment extends Fragment {
 
             // question 2
             addQuestionToList(questionsList, optionsList,
-                    "Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
-                    populationChange);
+                    "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearRandom + "?",
+                    populationDuringRandomYear);
 
             // question 3
+            addQuestionToList(questionsList, optionsList,
+                    "Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
+                    populationChangeLatest);
+
+            // question 4
+            addQuestionToList(questionsList, optionsList,
+                    "Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearRandom + "?",
+                    populationChangeDuringRandomYear);
+
+            // question 5
             addQuestionToList(questionsList, optionsList,
                     "Kuinka monta henkilöautoa on liikennekäytössä kunnassa " + populationDataStorage.getMunicipality() + "?",
                     carAmount);
 
-            // question 4
+            // question 6
             addQuestionToList(questionsList, optionsList,
                     "Mikä oli työllisyysaste kunnassa " + populationDataStorage.getMunicipality() + "?",
                     employmentRate);
 
-            // question 5
+            // question 7
             addQuestionToList(questionsList, optionsList,
                     "Mikä oli työpaikkojen omavaraisuus kunnassa " + populationDataStorage.getMunicipality() + "?",
                     employmentSelfSufficiency);
 
-            // question 6
-            addQuestionToList(questionsList, optionsList,
-                    "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearRandom + "?",
-                    populationDuringRandomYear);
-
-            //question 7
+            //question 8
             addQuestionToList(questionsList, optionsList,
                     "Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
                     temperature);
 
-            // question 8
+            // question 9
             optionsList.clear();
             optionsList.add(String.valueOf(weatherDescription));
             int counter = 0;
@@ -166,7 +173,7 @@ public class QuizFragment extends Fragment {
                     new ArrayList<>(optionsList), correctAnswerIndex));
             optionsList.clear();
 
-            // question 9
+            // question 10
             addQuestionToList(questionsList, optionsList,
                     "Kuinka monta autoa sataa asukasta kohden on kunnassa " + populationDataStorage.getMunicipality() + "?",
                     carsPerPopulation);
