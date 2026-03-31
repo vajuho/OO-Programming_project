@@ -38,8 +38,10 @@ public class QuizFragment extends Fragment {
     }
 
     private void addQuestionToList(ArrayList<QuestionData> questionsList, ArrayList<String> optionsList,
-                                   String questionText, Number correctAnswer, double low, double high) {
+                                   String questionText, Number correctAnswer) {
         String correctString = String.valueOf(correctAnswer);
+        double low = 0.4;
+        double high = 0.9;
         optionsList.add(correctString);
 
         double correctDouble = correctAnswer.doubleValue();
@@ -94,10 +96,8 @@ public class QuizFragment extends Fragment {
             int employmentRate = (int) Double.parseDouble(yearPlusEmployment.split(":")[1]);
             String yearPlusSufficiency = municipalityData.getEmploymentData().getEmploymentSelfSufficiency();
             int employmentSelfSufficiency = (int) Double.parseDouble(yearPlusSufficiency.split(":")[1]);
-
             int correctAnswerIndex = 0;
-            double low = 0.4;
-            double high = 0.9;
+
             ArrayList<String> weatherDescriptionsList = new ArrayList<>(Arrays.asList(
                     "thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain",
                     "light thunderstorm", "thunderstorm", "heavy thunderstorm", "ragged thunderstorm",
@@ -115,37 +115,37 @@ public class QuizFragment extends Fragment {
             // question 1
             addQuestionToList(questionsList, optionsList,
                     "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
-                    populationLatest, low, high);
+                    populationLatest);
 
             // question 2
             addQuestionToList(questionsList, optionsList,
                     "Mikä oli väkiluvun muutos kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearLatest + "?",
-                    populationChange, low, high);
+                    populationChange);
 
             // question 3
             addQuestionToList(questionsList, optionsList,
                     "Kuinka monta henkilöautoa on liikennekäytössä kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    carAmount, low, high);
+                    carAmount);
 
             // question 4
             addQuestionToList(questionsList, optionsList,
                     "Mikä oli työllisyysaste kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    employmentRate, low, high);
+                    employmentRate);
 
             // question 5
             addQuestionToList(questionsList, optionsList,
                     "Mikä oli työpaikkojen omavaraisuus kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    employmentSelfSufficiency, low, high);
+                    employmentSelfSufficiency);
 
             // question 6
             addQuestionToList(questionsList, optionsList,
                     "Mikä oli väkiluku kunnassa " + populationDataStorage.getMunicipality() + " vuonna " + yearRandom + "?",
-                    populationDuringRandomYear, low, high);
+                    populationDuringRandomYear);
 
             //question 7
             addQuestionToList(questionsList, optionsList,
                     "Mikä on tämänhetkinen lämpötila kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    temperature, low, high);
+                    temperature);
 
             // question 8
             optionsList.clear();
@@ -164,6 +164,7 @@ public class QuizFragment extends Fragment {
             questionsList.add(new QuestionData("Minkälainen on tämänhetkinen sää kunnassa " + populationDataStorage.getMunicipality() + "?",
                     new ArrayList<>(optionsList), correctAnswerIndex));
             optionsList.clear();
+
 
             RecyclerView recyclerView = view.findViewById(R.id.QuizRecyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
