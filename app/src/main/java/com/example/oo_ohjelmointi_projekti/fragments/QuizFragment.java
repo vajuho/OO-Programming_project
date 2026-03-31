@@ -96,6 +96,7 @@ public class QuizFragment extends Fragment {
             int employmentRate = (int) Double.parseDouble(yearPlusEmployment.split(":")[1]);
             String yearPlusSufficiency = municipalityData.getEmploymentData().getEmploymentSelfSufficiency();
             int employmentSelfSufficiency = (int) Double.parseDouble(yearPlusSufficiency.split(":")[1]);
+            double carsPerPopulation = (carAmount / populationLatest) * 100;
             int correctAnswerIndex = 0;
 
             ArrayList<String> weatherDescriptionsList = new ArrayList<>(Arrays.asList(
@@ -164,6 +165,11 @@ public class QuizFragment extends Fragment {
             questionsList.add(new QuestionData("Minkälainen on tämänhetkinen sää kunnassa " + populationDataStorage.getMunicipality() + "?",
                     new ArrayList<>(optionsList), correctAnswerIndex));
             optionsList.clear();
+
+            // question 9
+            addQuestionToList(questionsList, optionsList,
+                    "Kuinka monta autoa sataa asukasta kohden on kunnassa " + populationDataStorage.getMunicipality() + "?",
+                    carsPerPopulation);
 
 
             RecyclerView recyclerView = view.findViewById(R.id.QuizRecyclerView);
