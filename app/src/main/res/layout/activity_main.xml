@@ -13,19 +13,17 @@
         android:layout_width="215dp"
         android:layout_height="49dp"
         android:layout_marginStart="102dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="99dp"
-        android:layout_marginBottom="673dp"
+        android:layout_marginBottom="30dp"
         android:digits="abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ- "
         android:ems="10"
         android:hint="Syötä kunta"
         android:inputType="textCapSentences"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/CityInfoSearchButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.536" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/CityInfoSearchButton"
@@ -45,7 +43,7 @@
         app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CityNameEdit"
-        app:layout_constraintVertical_bias="0.471" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/SearchedCitiesRV"
@@ -105,13 +103,13 @@
 
     <TextView
         android:id="@+id/headingText"
-        android:layout_width="258dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="240dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="44dp"
         android:text="Tervetuloa kuntahakusovellukseen! :)"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
