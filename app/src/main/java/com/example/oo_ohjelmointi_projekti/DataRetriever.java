@@ -21,8 +21,7 @@ public class DataRetriever {
     private final String CONVERTER_BASE_URL = "https://api.openweathermap.org/geo/1.0/direct?q=%s&limit=5&appid=%s";
     private final String WEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid=%s";
 
-    public ArrayList<PopulationData> getPopulation(Context context, String area) {
-        ObjectMapper objectMapper = new ObjectMapper();
+    public String getMunicipalityCode(ObjectMapper objectMapper, String area) {
         JsonNode areas = null;
         try {
             areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
@@ -43,6 +42,23 @@ public class DataRetriever {
             }
             String code = null;
             code = municipalityCodes.get(area);
+            return code;
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    public ArrayList<PopulationData> getPopulation(Context context, String area) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            String code = getMunicipalityCode(objectMapper, area);
 
             URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/synt/statfin_synt_pxt_12dy.px");
 
@@ -107,26 +123,8 @@ public class DataRetriever {
 
     public String getEmploymentRate(Context context, String area) {
         ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode areas = null;
         try {
-            areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
-            ArrayList<String> keys = new ArrayList<>();
-            ArrayList<String> values = new ArrayList<>();
-
-            for (JsonNode node : areas.get("variables").get(1).get("values")) {
-                values.add(node.asText());
-            }
-            for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
-                keys.add(node.asText());
-            }
-
-            HashMap<String, String> municipalityCodes = new HashMap<>();
-
-            for (int i = 0; i < keys.size(); i++) {
-                municipalityCodes.put(keys.get(i), values.get(i));
-            }
-            String code = null;
-            code = municipalityCodes.get(area);
+            String code = getMunicipalityCode(objectMapper, area);
 
             URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/tyokay/statfin_tyokay_pxt_115x.px");
 
@@ -175,26 +173,8 @@ public class DataRetriever {
 
     public String getEmploymentSelfSufficiency(Context context, String area) {
         ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode areas = null;
         try {
-            areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
-            ArrayList<String> keys = new ArrayList<>();
-            ArrayList<String> values = new ArrayList<>();
-
-            for (JsonNode node : areas.get("variables").get(1).get("values")) {
-                values.add(node.asText());
-            }
-            for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
-                keys.add(node.asText());
-            }
-
-            HashMap<String, String> municipalityCodes = new HashMap<>();
-
-            for (int i = 0; i < keys.size(); i++) {
-                municipalityCodes.put(keys.get(i), values.get(i));
-            }
-            String code = null;
-            code = municipalityCodes.get(area);
+            String code = getMunicipalityCode(objectMapper, area);
 
             URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/tyokay/statfin_tyokay_pxt_125s.px");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -240,26 +220,8 @@ public class DataRetriever {
 
     public String getCarAmount(Context context, String area) {
         ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode areas = null;
         try {
-            areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
-            ArrayList<String> keys = new ArrayList<>();
-            ArrayList<String> values = new ArrayList<>();
-
-            for (JsonNode node : areas.get("variables").get(1).get("values")) {
-                values.add(node.asText());
-            }
-            for (JsonNode node : areas.get("variables").get(1).get("valueTexts")) {
-                keys.add(node.asText());
-            }
-
-            HashMap<String, String> municipalityCodes = new HashMap<>();
-
-            for (int i = 0; i < keys.size(); i++) {
-                municipalityCodes.put(keys.get(i), values.get(i));
-            }
-            String code = null;
-            code = municipalityCodes.get(area);
+            String code = getMunicipalityCode(objectMapper, area);
 
             URL url = new URL("https://trafi2.stat.fi/PXWeb/api/v1/fi/TraFi/Liikennekaytossa_olevat_ajoneuvot/010_kanta_tau_101.px");
 
