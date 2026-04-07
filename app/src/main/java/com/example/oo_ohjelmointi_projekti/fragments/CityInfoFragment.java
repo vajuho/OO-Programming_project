@@ -58,6 +58,9 @@ public class CityInfoFragment extends Fragment {
         MunicipalityData municipalityData = MunicipalityData.getInstance();
 
         cityNameText.setText(populationDataStorage.getMunicipality());
+
+        // Below this we have multiple null checkers so that the program does not crash.
+
         if (municipalityData.getWikiData() != null) {
             cityDescriptionText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(0));
             cityWikiUrlText.setText(municipalityData.getWikiData().getWikiUrlAndDescription().get(1));
@@ -121,12 +124,10 @@ public class CityInfoFragment extends Fragment {
                 carImageView.setImageResource(R.drawable.car_tier_3);
             } else if (carAmount >= tierThree) {
                 carImageView.setImageResource(R.drawable.car_tier_4);
-            } else {
-                carImageView.setImageResource(R.drawable.car_unknown);
             }
         } else {
             carImageView.setImageResource(R.drawable.car_unknown);
         }
         return view;
     }
-    }
+}

@@ -37,10 +37,12 @@ public class CompareFragment extends Fragment {
         ArrayList<PopulationData> cityOnePopulationList = cityOne.getPopulations();
         ArrayList<PopulationData> cityTwoPopulationList = cityTwo.getPopulationList();
 
+        // Checking if either one is empty so that the program does not crash.
         if (cityOnePopulationList == null || cityTwoPopulationList == null) {
             return view;
         }
 
+        // Getting the latest year's population for comparing each municipality
         int cityOnePopulation = cityOnePopulationList.get(cityOnePopulationList.size() - 1).getAmount();
         int cityTwoPopulation = cityTwoPopulationList.get(cityTwoPopulationList.size() - 1).getAmount();
 
