@@ -21,7 +21,7 @@ public class QuizViewHolder extends RecyclerView.ViewHolder {
         optionsGroup = itemView.findViewById(R.id.OptionsGroup);
 
     }
-
+    // This method adds the questions to the visa
     public void setQuestion(QuestionData question, int position, ArrayList<Integer> selectedAnswers) {
         questionText.setText(question.getQuestionText());
         ArrayList<String> options = question.getOptions();
@@ -29,7 +29,7 @@ public class QuizViewHolder extends RecyclerView.ViewHolder {
         optionsGroup.setOnCheckedChangeListener(null);
         optionsGroup.clearCheck();
 
-        for (int i = 0; i < optionsGroup.getChildCount(); i++) {
+        for (int i = 0; i < optionsGroup.getChildCount(); i++) {        // Child are the buttons in the radio group
             RadioButton radioButton = (RadioButton) optionsGroup.getChildAt(i);
             radioButton.setText(options.get(i));
             radioButton.setId(i);
