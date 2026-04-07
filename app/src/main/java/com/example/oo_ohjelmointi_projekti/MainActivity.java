@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (employmentRate == null) {
+                        if (wikiDataList == null) {
                             StatusText.setText("Haku epäonnistui, kaupunkia ei ole olemassa tai se on kirjoitettu väärin.");
                             Glide.with(MainActivity.this).asGif().load(R.drawable.fail).into(StatusImage);
                             return;
