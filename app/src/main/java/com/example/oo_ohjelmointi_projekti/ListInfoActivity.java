@@ -3,8 +3,6 @@ package com.example.oo_ohjelmointi_projekti;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +15,6 @@ import com.example.oo_ohjelmointi_projekti.fragments.CityInfoFragment;
 import com.example.oo_ohjelmointi_projekti.fragments.CompareFragment;
 import com.example.oo_ohjelmointi_projekti.fragments.QuizFragment;
 
-import java.util.ArrayList;
 
 public class ListInfoActivity extends AppCompatActivity {
 

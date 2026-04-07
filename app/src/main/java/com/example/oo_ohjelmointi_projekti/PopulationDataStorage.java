@@ -1,6 +1,5 @@
 package com.example.oo_ohjelmointi_projekti;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class PopulationDataStorage {

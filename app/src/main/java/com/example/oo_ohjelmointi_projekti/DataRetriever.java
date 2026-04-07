@@ -56,7 +56,7 @@ public class DataRetriever {
 
     }
 
-    // Method which uses tilastokeskus API for searching population related data
+    // Method which uses Statistics Finland API for searching population related data
     public ArrayList<PopulationData> getPopulation(Context context, String area) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -123,7 +123,7 @@ public class DataRetriever {
         return null;
     }
 
-    // Method which uses tilastokeskus API for searching employment related data
+    // Method which uses Statistics Finland API for searching employment related data
     public String getEmploymentRate(Context context, String area) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -174,7 +174,7 @@ public class DataRetriever {
         return null;
     }
 
-    // Method which uses tilastokeskus API for searching employment related data
+    // Method which uses Statistics Finland API for searching employment related data
     public String getEmploymentSelfSufficiency(Context context, String area) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {

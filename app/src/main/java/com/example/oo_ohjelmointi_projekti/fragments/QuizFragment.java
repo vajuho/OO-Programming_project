@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.oo_ohjelmointi_projekti.ComparedCityData;
 import com.example.oo_ohjelmointi_projekti.MunicipalityData;
 import com.example.oo_ohjelmointi_projekti.PopulationData;
 import com.example.oo_ohjelmointi_projekti.PopulationDataStorage;
