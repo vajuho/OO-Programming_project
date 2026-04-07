@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         if (wikiDataList == null || employmentRate == null) {
                             StatusText.setText("Haku epäonnistui, kaupunkia ei ole olemassa tai se on kirjoitettu väärin.");
-                            Glide.with(MainActivity.this).asGif().load(R.drawable.fail).into(StatusImage);      // Glide is used to display gifs
+                            Glide.with(MainActivity.this).asGif().load(R.drawable.fail).into(StatusImage);      // Glide is used to display GIFs
                             return;                                                                                    // More information in the documentation
                         }
                         PopulationDataStorage populationStorage = PopulationDataStorage.getInstance();
