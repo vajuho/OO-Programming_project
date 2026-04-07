@@ -97,7 +97,10 @@ public class QuizFragment extends Fragment {
             int populationChangeDuringRandomYear = populationList.get(yearRandomIndex).getPopulationIncrease();
             double temperature = municipalityData.getWeather().getTemperature();
             String weatherDescription = municipalityData.getWeather().getDescription();
-            int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
+            int carAmount = -1;
+            if (municipalityData.getCarData() != null && municipalityData.getCarData().getCarAmount() != null) {
+                carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
+            }
             String yearPlusEmployment = municipalityData.getEmploymentData().getEmploymentRate();
             int employmentRate = (int) Double.parseDouble(yearPlusEmployment.split(":")[1]);
             String yearPlusSufficiency = municipalityData.getEmploymentData().getEmploymentSelfSufficiency();
@@ -141,9 +144,11 @@ public class QuizFragment extends Fragment {
                     populationChangeDuringRandomYear);
 
             // question 5
-            addQuestionToList(
-                    "Kuinka monta henkilöautoa on liikennekäytössä kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    carAmount);
+            if (carAmount != -1) {
+                addQuestionToList(
+                        "Kuinka monta henkilöautoa on liikennekäytössä kunnassa " + populationDataStorage.getMunicipality() + "?",
+                        carAmount);
+            }
 
             // question 6
             addQuestionToList(
@@ -179,9 +184,11 @@ public class QuizFragment extends Fragment {
             optionsList.clear();
 
             // question 10
-            addQuestionToList(
-                    "Kuinka monta autoa sataa asukasta kohden on kunnassa " + populationDataStorage.getMunicipality() + "?",
-                    carsPerPopulation);
+            if (carAmount != -1) {
+                addQuestionToList(
+                        "Kuinka monta autoa sataa asukasta kohden on kunnassa " + populationDataStorage.getMunicipality() + "?",
+                        carsPerPopulation);
+            }
 
             Collections.shuffle(questionsList);
             RecyclerView recyclerView = view.findViewById(R.id.QuizRecyclerView);
