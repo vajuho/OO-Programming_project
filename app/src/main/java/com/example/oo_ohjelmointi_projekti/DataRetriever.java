@@ -24,7 +24,7 @@ public class DataRetriever {
     public String getMunicipalityCode(ObjectMapper objectMapper, String area) {
         JsonNode areas = null;
         try {
-            areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px"));
+            areas = objectMapper.readTree(new URL("https://statfin.stat.fi/PxWeb/api/v1/fi/StatFin/synt/statfin_synt_pxt_12dy.px"));
             ArrayList<String> keys = new ArrayList<>();
             ArrayList<String> values = new ArrayList<>();
 
