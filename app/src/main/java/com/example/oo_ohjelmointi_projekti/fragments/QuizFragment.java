@@ -33,12 +33,6 @@ public class QuizFragment extends Fragment {
     public QuizFragment() {
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
-    }
     // This method generates values for wrong answers and adds questions to questionsList.
     private void addQuestionToList(String questionText, Number correctAnswer) {
         String correctString = String.valueOf(correctAnswer);
@@ -99,7 +93,7 @@ public class QuizFragment extends Fragment {
             int populationChangeDuringRandomYear = populationList.get(yearRandomIndex).getPopulationIncrease();
             double temperature = municipalityData.getWeather().getTemperature();
             String weatherDescription = municipalityData.getWeather().getDescription();
-            int carAmount = -1;         // This is set to -1 because a municipality can have 0 cars
+            int carAmount = -1;         // This is set to -1 because a municipality might have 0 cars
             if (municipalityData.getCarData() != null && municipalityData.getCarData().getCarAmount() != null) {
                 carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
             }
