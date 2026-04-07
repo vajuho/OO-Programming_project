@@ -45,5 +45,5 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.21'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.21.1'
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.5'
-    implementation "com.github.bumptech.glide:glide:4.16.0"
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
 }
