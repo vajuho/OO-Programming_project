@@ -56,8 +56,8 @@ public class DataRetriever {
     }
 
     public ArrayList<PopulationData> getPopulation(Context context, String area) {
+        ObjectMapper objectMapper = new ObjectMapper();
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
             String code = getMunicipalityCode(objectMapper, area);
 
             URL url = new URL("https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/synt/statfin_synt_pxt_12dy.px");
