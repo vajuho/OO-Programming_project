@@ -101,7 +101,6 @@ public class QuizFragment extends Fragment {
             if (municipalityData.getCarData() != null && municipalityData.getCarData().getCarAmount() != null) {
                 carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
             }
-            //int carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
             String yearPlusEmployment = municipalityData.getEmploymentData().getEmploymentRate();
             int employmentRate = (int) Double.parseDouble(yearPlusEmployment.split(":")[1]);
             String yearPlusSufficiency = municipalityData.getEmploymentData().getEmploymentSelfSufficiency();
