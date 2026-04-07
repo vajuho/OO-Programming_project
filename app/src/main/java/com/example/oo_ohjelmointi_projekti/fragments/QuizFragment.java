@@ -40,7 +40,7 @@ public class QuizFragment extends Fragment {
         if (getArguments() != null) {
         }
     }
-
+    // This method generates values for wrong answers and adds questions to questionsList.
     private void addQuestionToList(String questionText, Number correctAnswer) {
         String correctString = String.valueOf(correctAnswer);
         double low = 0.3;
@@ -60,12 +60,15 @@ public class QuizFragment extends Fragment {
             }
 
             if (fakeString.equals(correctString)) {
-                fakeString = String.valueOf(correctAnswer instanceof Integer ?
-                          (int)fakeDouble + 1 : fakeDouble + 0.5);
+                if (correctAnswer instanceof Integer) {
+                    fakeString = String.valueOf(((int) fakeDouble) + 1);
+                } else if (correctAnswer instanceof Double) {
+                    fakeString = String.valueOf(fakeDouble + 0.5);
+                }
             }
             optionsList.add(fakeString);
         }
-        Collections.shuffle(optionsList);
+        Collections.shuffle(optionsList);       // This shuffles the order of the options
 
         int findCorrectAnswerIndex = optionsList.indexOf(correctString);
 
@@ -73,7 +76,7 @@ public class QuizFragment extends Fragment {
         optionsList.clear();
         }
 
-
+    // This method creates the questions
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -97,7 +100,7 @@ public class QuizFragment extends Fragment {
             int populationChangeDuringRandomYear = populationList.get(yearRandomIndex).getPopulationIncrease();
             double temperature = municipalityData.getWeather().getTemperature();
             String weatherDescription = municipalityData.getWeather().getDescription();
-            int carAmount = -1;
+            int carAmount = -1;         // This is set to -1 because a municipality can have 0 cars
             if (municipalityData.getCarData() != null && municipalityData.getCarData().getCarAmount() != null) {
                 carAmount = Integer.parseInt(municipalityData.getCarData().getCarAmount());
             }
@@ -109,7 +112,7 @@ public class QuizFragment extends Fragment {
             double carsPerPopulation = Math.round(carsPerPopulationValue * 10.0) / 10.0;
             int correctAnswerIndex = 0;
 
-            ArrayList<String> weatherDescriptionsList = new ArrayList<>(Arrays.asList(
+            ArrayList<String> weatherDescriptionsList = new ArrayList<>(Arrays.asList(          // These were taken from the openweather API
                     "thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain",
                     "light thunderstorm", "thunderstorm", "heavy thunderstorm", "ragged thunderstorm",
                     "thunderstorm with light drizzle", "thunderstorm with drizzle", "thunderstorm with heavy drizzle",
@@ -212,7 +215,7 @@ public class QuizFragment extends Fragment {
                     } else if (score <= 8){
                         ResultCommentText.setText("Tiedät jo kohtuullisesti kunnnista.");
                     } else if (score <= 10){
-                        ResultCommentText.setText("Olet kuntien numero guru!");
+                        ResultCommentText.setText("Olet kuntien tietoguru!");
                     }
                 });
             }
