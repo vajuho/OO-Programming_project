@@ -13,13 +13,12 @@
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="133dp"
         android:layout_height="54dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="4dp"
         android:backgroundTint="#19181B"
         android:onClick="goToCityForCompareActivity"
         android:text="Siirry vertailuun"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,14 +27,12 @@
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="130dp"
         android:layout_height="54dp"
-        android:layout_marginStart="1dp"
         android:layout_marginTop="4dp"
         android:backgroundTint="#19181B"
         android:onClick="goToQuiz"
         android:text="Siirry visaan"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintEnd_toStartOf="@+id/GoToHomeButton"
         app:layout_constraintStart_toEndOf="@+id/GoToCompareSearchButton"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,13 +42,12 @@
         android:layout_width="133dp"
         android:layout_height="54dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="1dp"
         android:backgroundTint="#19181B"
         android:onClick="goToHome"
         android:text="Siirry kuntahakuun"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.996"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
