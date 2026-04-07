@@ -18,10 +18,12 @@ public class LatestCityAdapter extends RecyclerView.Adapter<LatestCityViewHolder
     private Context context;
     private OnCityClickListener listener;
 
+    // This is an interface for handling city click events
     public interface OnCityClickListener {
         void onCityClick(String cityName);
     }
 
+    // This is a constructor for the adapter, takes context and click listener as parameters
     public LatestCityAdapter(Context context, OnCityClickListener listener) {
         this.context = context;
         this.listener = listener;

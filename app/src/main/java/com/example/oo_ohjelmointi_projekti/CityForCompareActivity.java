@@ -83,7 +83,7 @@ public class CityForCompareActivity extends AppCompatActivity {
 
     public void goToListInfoActivity(View view) {
         Intent intent = new Intent(this, ListInfoActivity.class);
-        intent.putExtra("ShowCompareInListInfoActivity", true);  // We found putExtra from geeksforgeeks. More info in the project plan.
+        intent.putExtra("ShowCompareInListInfoActivity", true);  // We found putExtra from geeksforgeeks. More info in the project documentation.
         startActivity(intent);
     }
 }

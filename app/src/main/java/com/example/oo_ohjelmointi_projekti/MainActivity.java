@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         StatusText = findViewById(R.id.StatusText);
         StatusImage = findViewById(R.id.StatusImage);
 
+        // Adapter with a click listener that fills the search field
+        // and triggers a search when a city is clicked from the latest searches list (RecyclerView)
         cityAdapter = new LatestCityAdapter(getApplicationContext(), cityName -> {
             CityNameEdit.setText(cityName);
             searchData(cityName);
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.setLayoutManager(new LinearLayoutManager(this));
         RecyclerView.setAdapter(cityAdapter);
     }
+
+    // This method is for the button in the MainActivity XML.
     public void searchDataMainActivity(View view) {
         String municipality = CityNameEdit.getText().toString().trim();
         if (!municipality.isEmpty()) {

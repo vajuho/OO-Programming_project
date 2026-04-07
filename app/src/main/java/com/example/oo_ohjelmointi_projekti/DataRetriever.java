@@ -21,6 +21,7 @@ public class DataRetriever {
     private final String CONVERTER_BASE_URL = "https://api.openweathermap.org/geo/1.0/direct?q=%s&limit=5&appid=%s";
     private final String WEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid=%s";
 
+    // Method which searches all municipality codes
     public String getMunicipalityCode(ObjectMapper objectMapper, String area) {
         JsonNode areas = null;
         try {
@@ -55,6 +56,7 @@ public class DataRetriever {
 
     }
 
+    // Method which uses tilastokeskus API for searching population related data
     public ArrayList<PopulationData> getPopulation(Context context, String area) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -121,6 +123,7 @@ public class DataRetriever {
         return null;
     }
 
+    // Method which uses tilastokeskus API for searching employment related data
     public String getEmploymentRate(Context context, String area) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -151,7 +154,7 @@ public class DataRetriever {
             JsonNode data = objectMapper.readTree(response.toString());
 
             JsonNode labels = data.get("dimension").get("Vuosi").get("category").get("label");
-            String year = null;
+            String year = null; // Setting the latest year with for-loop
             for (JsonNode node : labels) {
                 year = node.asText();
             }
@@ -171,6 +174,7 @@ public class DataRetriever {
         return null;
     }
 
+    // Method which uses tilastokeskus API for searching employment related data
     public String getEmploymentSelfSufficiency(Context context, String area) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -197,13 +201,13 @@ public class DataRetriever {
             }
             JsonNode data = objectMapper.readTree(response.toString());
             JsonNode labels = data.get("dimension").get("Vuosi").get("category").get("label");
-            String year2 = null;
+            String year2 = null; // Setting the latest year with for-loop
             for (JsonNode node : labels) {
                 year2 = node.asText();
             }
 
             JsonNode sufficiencyValues = data.get("value");
-            String sufficiency = sufficiencyValues.get(sufficiencyValues.size() - 1).asText();
+            String sufficiency = sufficiencyValues.get(sufficiencyValues.size() - 1).asText(); // Getting the latest year's sufficiency value
             String yearPlusSufficiency = year2 + ": " + sufficiency;
 
             return yearPlusSufficiency ;
@@ -218,6 +222,7 @@ public class DataRetriever {
         return null;
     }
 
+    // This is a method, which uses traficom API to get car amount for each municipality
     public String getCarAmount(Context context, String area) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -261,7 +266,7 @@ public class DataRetriever {
         }
         return null;
     }
-
+    // This method uses REST API to get wikipedia data. We have some documentation in the PDF file related to rest_v1
     public ArrayList<String> getWikiData(String area) {
         try {
             String urlString = "https://fi.wikipedia.org/api/rest_v1/page/summary/" + area;
@@ -302,6 +307,7 @@ public class DataRetriever {
         return null;
     }
 
+    // GetWeather method gets data from Openwheathermap API, which needs multiple final constants.
     public WeatherData getWeather(String area) {
         ObjectMapper objectMapper = new ObjectMapper();
 
