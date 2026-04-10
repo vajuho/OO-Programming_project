@@ -42,11 +42,6 @@ public class QuizViewHolder extends RecyclerView.ViewHolder {
         optionsGroup.setOnCheckedChangeListener((radioGroup, checkedId) -> {
             selectedAnswers.set(position, checkedId);
         });
-}
-
-    public int getSelectedAnswerIndex() {
-        int selectedId = optionsGroup.getCheckedRadioButtonId();
-        View radioButton = optionsGroup.findViewById(selectedId);
-        return optionsGroup.indexOfChild(radioButton);
     }
+
 }
