@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 StatusText.setText("Haetaan......");
+                StatusImage.setVisibility(View.VISIBLE);
                 Glide.with(MainActivity.this).asGif().load(R.drawable.loading).into(StatusImage);
             }
         });
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
                         cityAdapter.addCity(cityName);
                         StatusText.setText("Haku onnistui");
+                        StatusImage.setVisibility(View.GONE);
                         goToListInfo(view);
                     }
                 });
