@@ -167,7 +167,7 @@ public class QuizFragment extends Fragment {
             int counter = 0;
             while (counter < 3) {
                 String option = weatherDescriptionsList.get((int) (Math.random() * descriptionListLength));
-                if (!option.equals(weatherDescription)) {
+                if (!option.equals(weatherDescription) || !optionsList.contains(option)) {
                     optionsList.add(option);
                     counter++;
                 }
