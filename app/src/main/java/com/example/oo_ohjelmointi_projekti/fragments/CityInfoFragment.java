@@ -60,8 +60,9 @@ public class CityInfoFragment extends Fragment {
         }
 
         if (municipalityData.getPopulations() != null) {
-            populationAmountText.setText("Väkiluku: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount());
-            populationChangeText.setText("Väestönmuutos: " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease());
+            int year = municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getYear();
+            populationAmountText.setText("Väkiluku vuonna " + year + ": " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getAmount());
+            populationChangeText.setText("Väestönmuutos vuonna " + year + ": " + municipalityData.getPopulations().get(municipalityData.getPopulations().size() - 1).getPopulationIncrease());
 
             // Data visualization part begins
             // The code below draws some inspiration from AnyChart's GitHub samples.
