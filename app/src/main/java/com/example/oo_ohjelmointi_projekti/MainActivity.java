@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            StatusText.setText("Verkkovirhe. Tarkista internetyhteys!");
+                            StatusText.setText("Verkkovirhe. Tarkista internet-yhteys!");
                             Glide.with(MainActivity.this).asGif().load(R.drawable.fail).into(StatusImage);
                         }
                     });

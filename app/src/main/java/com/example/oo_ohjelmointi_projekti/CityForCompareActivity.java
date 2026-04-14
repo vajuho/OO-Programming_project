@@ -83,7 +83,7 @@ public class CityForCompareActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            StatusTextTwo.setText("Verkkovirhe. Tarkista internetyhteys!");
+                            StatusTextTwo.setText("Verkkovirhe. Tarkista internet-yhteys!");
                         }
                     });
                 }
