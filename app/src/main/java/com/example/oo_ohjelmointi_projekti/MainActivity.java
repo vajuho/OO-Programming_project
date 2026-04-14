@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -78,45 +79,55 @@ public class MainActivity extends AppCompatActivity {
         service.execute(new Runnable() {
             @Override
             public void run() {
-                ArrayList<PopulationData> populationDataList = dr.getPopulation(context, cityName);
-                String employmentRate = dr.getEmploymentRate(context, cityName);
-                String employmentSelfSufficiency = dr.getEmploymentSelfSufficiency(context, cityName);
-                String carAmount = dr.getCarAmount(context, cityName);
-                ArrayList<String> wikiDataList = dr.getWikiData(cityName);
-                WeatherData weatherData = dr.getWeather(cityName);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (wikiDataList == null || employmentRate == null) {
-                            StatusText.setText("Haku epäonnistui, kaupunkia ei ole olemassa tai se on kirjoitettu väärin.");
-                            Glide.with(MainActivity.this).asGif().load(R.drawable.fail).into(StatusImage);      // Glide is used to display GIFs
-                            return;                                                                                    // More information in the documentation
+                try {
+                    ArrayList<PopulationData> populationDataList = dr.getPopulation(context, cityName);
+                    String employmentRate = dr.getEmploymentRate(context, cityName);
+                    String employmentSelfSufficiency = dr.getEmploymentSelfSufficiency(context, cityName);
+                    String carAmount = dr.getCarAmount(context, cityName);
+                    ArrayList<String> wikiDataList = dr.getWikiData(cityName);
+                    WeatherData weatherData = dr.getWeather(cityName);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (wikiDataList == null || employmentRate == null) {
+                                StatusText.setText("Haku epäonnistui, kaupunkia ei ole olemassa tai se on kirjoitettu väärin.");
+                                Glide.with(MainActivity.this).asGif().load(R.drawable.fail).into(StatusImage);      // Glide is used to display GIFs
+                                return;                                                                                    // More information in the documentation
+                            }
+                            PopulationDataStorage populationStorage = PopulationDataStorage.getInstance();
+                            MunicipalityData municipalityDataStorage = MunicipalityData.getInstance();
+
+                            populationStorage.setMunicipality(cityName);
+                            for (PopulationData i : populationDataList) {
+                                populationStorage.addPopulationData(new PopulationData(i.getYear(), i.getAmount(), i.getPopulationIncrease()));
+                            }
+                            municipalityDataStorage.setPopulations(populationStorage.getPopulationList());
+
+                            municipalityDataStorage.setEmploymentData(new EmploymentData(employmentRate, employmentSelfSufficiency));
+
+                            municipalityDataStorage.setCarData(new CarData(carAmount));
+                            if (wikiDataList.get(0).equals("Wikimedia-täsmennyssivu")) {
+                                wikiDataList.set(0, "");
+                            }
+                            municipalityDataStorage.setWikiData(new WikipediaData(wikiDataList));
+
+                            municipalityDataStorage.setWeather(weatherData);
+
+                            cityAdapter.addCity(cityName);
+                            StatusText.setText("Haku onnistui");
+                            StatusImage.setVisibility(View.GONE);
+                            goToListInfo(view);
                         }
-                        PopulationDataStorage populationStorage = PopulationDataStorage.getInstance();
-                        MunicipalityData municipalityDataStorage = MunicipalityData.getInstance();
-
-                        populationStorage.setMunicipality(cityName);
-                        for (PopulationData i : populationDataList) {
-                            populationStorage.addPopulationData(new PopulationData(i.getYear(), i.getAmount(), i.getPopulationIncrease()));
+                    });
+                } catch (Exception e) {  // Added a try-catch block to handle network errors instead of crashing.
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            StatusText.setText("Verkkovirhe. Tarkista internetyhteys!");
+                            Glide.with(MainActivity.this).asGif().load(R.drawable.fail).into(StatusImage);
                         }
-                        municipalityDataStorage.setPopulations(populationStorage.getPopulationList());
-
-                        municipalityDataStorage.setEmploymentData(new EmploymentData(employmentRate, employmentSelfSufficiency));
-
-                        municipalityDataStorage.setCarData(new CarData(carAmount));
-                        if (wikiDataList.get(0).equals("Wikimedia-täsmennyssivu")) {
-                            wikiDataList.set(0, "");
-                        }
-                        municipalityDataStorage.setWikiData(new WikipediaData(wikiDataList));
-
-                        municipalityDataStorage.setWeather(weatherData);
-
-                        cityAdapter.addCity(cityName);
-                        StatusText.setText("Haku onnistui");
-                        StatusImage.setVisibility(View.GONE);
-                        goToListInfo(view);
-                    }
-                });
+                    });
+                }
             }
         });
     }
